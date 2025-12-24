@@ -1425,7 +1425,15 @@
             const email = document.getElementById('email').value;
             const event = document.getElementById('event').value;
             const message = document.getElementById('message').value;
-            const waMessage = `Halo Admin Senada, Saya tertarik dengan jasa anda. Berikut data saya Nama: ${name}%0AEmail: ${email}%0AJenis Acara: ${event}%0APesan: ${message}`;
+            const waMessage = `Halo Tim Senada! 👋%0A%0A
+Saya tertarik dengan jasa pembuatan website personal untuk momen spesial.%0A%0A
+📋 *Detail Saya:*%0A
+• Nama: ${name}%0A
+• Email: ${email}%0A
+• Jenis Acara: ${event}%0A%0A
+💌 *Pesan/Rencana Kejutan:*%0A
+${message}%0A%0A
+Terima kasih, mohon dibantu info paket dan langkah selanjutnya ya! 😊`;
             const waUrl = `https://wa.me/+6285708989602?text=${waMessage}`;
             window.open(waUrl, '_blank');
         });
