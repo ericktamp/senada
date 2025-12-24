@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Senada - Website Personal untuk Momen Spesial</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -707,6 +707,230 @@
             .footer-columns { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; text-align: center; }
         }
+        /* Extra improvements untuk mobile kecil */
+@media (max-width: 640px) {
+    nav, section, footer {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .hero {
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 38px !important;
+        letter-spacing: -1px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .btn-primary, .btn-secondary {
+        padding: 16px 24px;
+    }
+
+    /* Stats jadi 1 kolom di HP kecil */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .stat-number {
+        font-size: 42px;
+    }
+
+    /* Section header */
+    .section-title {
+        font-size: 34px !important;
+    }
+
+    .section-description {
+        font-size: 16px;
+    }
+
+    /* Nav menu di HP */
+    .nav-menu {
+        gap: 20px;
+        font-size: 14px;
+    }
+
+    .lang-switcher {
+        gap: 8px;
+    }
+
+    .lang-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    /* Contact form */
+    .contact-container {
+        padding: 40px 20px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 14px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 34px !important;
+    }
+
+    .hero-badge {
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+
+    .section-title {
+        font-size: 30px !important;
+    }
+
+    .portfolio-content {
+        padding: 30px 20px;
+    }
+
+    .portfolio-item h3 {
+        font-size: 24px;
+    }
+
+    .price {
+        font-size: 48px;
+    }
+
+    .pricing-card {
+        padding: 35px 25px;
+    }
+
+    .pricing-badge {
+        font-size: 12px;
+        padding: 6px 20px;
+    }
+}
+.btn-primary, .btn-secondary, .submit-btn, .nav-cta {
+    min-height: 48px; /* WCAG recommendation untuk touch target */
+}
+/* Nav container untuk flex yang lebih baik */
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Hamburger Icon */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background: var(--text);
+    transition: all 0.3s;
+}
+
+/* Animate hamburger jadi X saat active */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(15, 15, 35, 0.98);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+    z-index: 999;
+}
+
+.mobile-menu.active {
+    transform: translateY(0);
+}
+
+.mobile-menu-content {
+    text-align: center;
+}
+
+.mobile-nav-links {
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.mobile-nav-links a {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.mobile-lang {
+    justify-content: center;
+    gap: 20px;
+}
+
+.mobile-lang .lang-btn {
+    padding: 12px 24px;
+    font-size: 18px;
+}
+
+/* Responsive untuk mobile */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu-desktop {
+        display: none;
+    }
+
+    nav {
+        padding: 20px 20px;
+    }
+
+    nav.scrolled {
+        padding: 15px 20px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+}
     </style>
 </head>
 <body>
@@ -720,20 +944,48 @@
     </div>
 
     <nav id="navbar">
+    <div class="nav-container">
         <div class="logo">Se<span>nada</span></div>
-        <div style="display: flex; align-items: center;">
+
+        <!-- Hamburger Icon (hanya muncul di mobile) -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Menu items (desktop version) -->
+        <div class="nav-menu-desktop">
             <div class="nav-menu">
                 <a href="#features" data-id="nav-features">Layanan</a>
                 <a href="#portfolio" data-id="nav-portfolio">Portfolio</a>
                 <a href="#pricing" data-id="nav-pricing">Harga</a>
                 <a href="#contact" class="nav-cta" data-id="nav-cta">Mulai Project</a>
+                            <div class="lang-switcher">
+                <div class="lang-btn active" data-lang="id">ID</div>
+                <div class="lang-btn" data-lang="en">EN</div>
             </div>
-            <div class="lang-switcher">
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <div class="nav-menu mobile-nav-links">
+                <a href="#home" data-id="nav-features">X</a>
+                <a href="#features" data-id="nav-features">Layanan</a>
+                <a href="#portfolio" data-id="nav-portfolio">Portfolio</a>
+                <a href="#pricing" data-id="nav-pricing">Harga</a>
+                <a href="#contact" class="nav-cta" data-id="nav-cta">Mulai Project</a>
+            </div>
+            <div class="lang-switcher mobile-lang">
                 <div class="lang-btn active" data-lang="id">ID</div>
                 <div class="lang-btn" data-lang="en">EN</div>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <section class="hero">
         <div class="hero-content">
@@ -1174,7 +1426,7 @@
             const event = document.getElementById('event').value;
             const message = document.getElementById('message').value;
             const waMessage = `Nama: ${name}%0AEmail: ${email}%0AJenis Acara: ${event}%0APesan: ${message}`;
-            const waUrl = `https://wa.me/+6281234567890?text=${waMessage}`;
+            const waUrl = `https://wa.me/+6285708989602?text=${waMessage}`;
             window.open(waUrl, '_blank');
         });
 
@@ -1188,6 +1440,22 @@
                 modal.style.display = 'none';
             });
         }
+        // Hamburger menu toggle
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+});
+
+// Tutup menu kalau klik link
+document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+    });
+});
     </script>
 </body>
 </html>
