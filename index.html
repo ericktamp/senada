@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Senada - Website Personal untuk Momen Spesial</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
 
         * {
             margin: 0;
@@ -25,11 +26,28 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Reenie Beanie', cursive; /* Handwriting font for body text */
             background: var(--dark);
             color: var(--text);
             overflow-x: hidden;
             cursor: none;
+            font-size: 1.2em; /* Slightly larger for readability */
+        }
+
+        h1, h2, h3, h4, .logo, .section-title, .stat-number, .price {
+            font-family: 'Caveat', cursive; /* More elegant handwriting for headings */
+            font-weight: 700;
+        }
+
+        /* Add a subtle paper texture background for handwriting concept */
+        .bg-container {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(180deg, #0f0f23 0%, #1a1a2e 100%);
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png'); /* Free paper texture from transparenttextures.com */
+            background-blend-mode: overlay;
+            opacity: 0.8;
         }
 
         /* Custom Cursor */
@@ -58,13 +76,6 @@
         }
 
         /* Background Shapes */
-        .bg-container {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            background: linear-gradient(180deg, #0f0f23 0%, #1a1a2e 100%);
-        }
-
         .bg-shape {
             position: absolute;
             border-radius: 50%;
@@ -571,7 +582,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             color: #fff;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Reenie Beanie', cursive;
             font-size: 15px;
             transition: all 0.3s;
         }
