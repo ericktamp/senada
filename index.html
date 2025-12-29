@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Senada - Website Personal untuk Momen Spesial</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
         * {
             margin: 0;
@@ -15,89 +14,59 @@
         }
 
         :root {
-            --primary: #FF69B4; /* Hot Pink for romantic couple theme */
-            --secondary: #FFB6C1; /* Light Pink */
-            --accent: #DB7093; /* Pale Violet Red */
-            --dark: #1E1E2F; /* Softer dark for better contrast */
-            --light: #FFF0F5; /* Lavender Blush for highlights */
+            --primary: #4A90E2; /* Fresh blue for modern, energetic feel */
+            --secondary: #50E3C2; /* Mint green for freshness */
+            --accent: #9013FE; /* Vibrant purple for accent */
+            --dark: #001F3F; /* Deep navy for sophistication */
+            --light: #F0F4F8; /* Light blue-gray for backgrounds */
             --text: #FFFFFF;
-            --text-muted: rgba(255, 255, 255, 0.85); /* Increased opacity for readability */
+            --text-dark: #001F3F;
+            --text-muted: rgba(255, 255, 255, 0.85);
             --text-soft: rgba(255, 255, 255, 0.65);
         }
 
         body {
-            font-family: 'Kalam', cursive; /* Legible handwriting font for body */
-            background: var(--dark);
-            color: var(--text);
+            font-family: 'Poppins', sans-serif; /* Clean, modern sans-serif font */
+            background: var(--light);
+            color: var(--text-dark);
             overflow-x: hidden;
-            cursor: none;
-            font-size: 1.1em; /* Slightly larger for better readability */
-            line-height: 1.6; /* Improved line spacing */
+            cursor: default; /* Standard cursor for professional look */
+            font-size: 1em;
+            line-height: 1.6;
         }
 
         h1, h2, h3, h4, .logo, .section-title, .stat-number, .price {
-            font-family: 'Caveat Brush', cursive; /* Bold, fun handwriting for headings */
-            font-weight: 400; /* Natural feel */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Subtle shadow for better readability on dark bg */
+            font-weight: 700;
+            color: var(--dark);
         }
 
-        p, li, a {
-            text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.2); /* Light shadow for text readability */
-        }
-
-        /* Background with soft romantic texture */
+        /* Background with modern gradient */
         .bg-container {
             position: fixed;
             inset: 0;
             z-index: 0;
-            background: linear-gradient(180deg, var(--dark) 0%, #2A2A3F 100%);
-            background-image: url('https://www.transparenttextures.com/patterns/white-paper.png'); /* Soft paper texture for handwriting concept */
-            background-blend-mode: soft-light;
-            opacity: 0.9;
+            background: linear-gradient(135deg, var(--light) 0%, #E0F7FA 100%); /* Fresh cyan gradient */
         }
 
-        /* Custom Cursor with heart shape for couple theme */
-        .cursor {
-            width: 24px;
-            height: 24px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FF69B4"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center/cover;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.1s ease;
-            transform: translate(-50%, -50%);
-        }
+        /* Remove custom cursor for clean look */
+        /* No cursor styles */
 
-        .cursor-follower {
-            width: 10px;
-            height: 10px;
-            background: var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.15s ease;
-            transform: translate(-50%, -50%);
-        }
-
-        /* Softer floating shapes with romantic colors */
+        /* Modern floating particles for fresh animation */
         .bg-shape {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.25;
-            animation: float 25s infinite ease-in-out;
+            filter: blur(50px);
+            opacity: 0.4;
+            animation: float-modern 15s infinite ease-in-out;
         }
 
-        .shape1 { width: 450px; height: 450px; background: var(--primary); top: -150px; left: -150px; }
-        .shape2 { width: 350px; height: 350px; background: var(--secondary); bottom: -100px; right: -100px; animation-delay: 6s; }
-        .shape3 { width: 300px; height: 300px; background: var(--accent); top: 40%; left: 20%; animation-delay: 12s; }
+        .shape1 { width: 300px; height: 300px; background: var(--primary); top: -50px; left: -50px; }
+        .shape2 { width: 250px; height: 250px; background: var(--secondary); bottom: -30px; right: -30px; animation-delay: 4s; }
+        .shape3 { width: 200px; height: 200px; background: var(--accent); top: 60%; left: 30%; animation-delay: 8s; }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(40px, -60px) rotate(5deg); }
-            50% { transform: translate(-30px, 30px) rotate(-5deg); }
-            75% { transform: translate(20px, -20px) rotate(3deg); }
+        @keyframes float-modern {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(20px, 40px); }
         }
 
         /* Navigation */
@@ -105,90 +74,86 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 25px 80px;
+            padding: 20px 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
             transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 31, 63, 0.1);
         }
 
         nav.scrolled {
-            background: rgba(30, 30, 47, 0.95); /* Softer dark */
-            backdrop-filter: blur(20px);
-            padding: 20px 80px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 15px 80px;
         }
 
         .logo {
-            font-size: 32px;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
+            font-size: 28px;
+            font-weight: 800;
             color: var(--primary);
         }
 
         .nav-menu {
             display: flex;
-            gap: 50px;
+            gap: 40px;
             align-items: center;
         }
 
         .nav-menu a {
-            color: var(--text-muted);
+            color: var(--text-dark);
             text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s, transform 0.3s;
-            position: relative;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
         }
 
         .nav-menu a:hover {
-            color: var(--text);
-            transform: scale(1.05);
+            color: var(--primary);
         }
 
         .nav-cta {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            padding: 12px 32px;
-            border-radius: 12px;
+            background: var(--primary);
+            padding: 10px 28px;
+            border-radius: 30px;
             color: #fff !important;
+            font-weight: 600;
             transition: all 0.3s;
         }
 
         .nav-cta:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+            background: #3A7CC8;
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
         }
 
         /* Language Switcher */
         .lang-switcher {
             display: flex;
-            gap: 10px;
-            margin-left: 30px;
+            gap: 8px;
+            margin-left: 20px;
         }
 
         .lang-btn {
-            padding: 8px 16px;
-            border-radius: 8px;
+            padding: 6px 14px;
+            border-radius: 30px;
             font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s;
-            background: rgba(255,255,255,0.1);
-            color: var(--text-muted);
+            background: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--text-soft);
         }
 
         .lang-btn.active {
             background: var(--primary);
             color: #fff;
+            border: none;
         }
 
         .lang-btn:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .lang-btn.active:hover {
             background: var(--primary);
+            color: #fff;
         }
 
         /* Hero Section */
@@ -202,72 +167,72 @@
         }
 
         .hero-content {
-            max-width: 700px;
+            max-width: 600px;
         }
 
         .hero-badge {
             display: inline-block;
-            background: rgba(255, 105, 180, 0.15);
-            border: 1px solid rgba(255, 105, 180, 0.3);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 16px;
+            background: rgba(74, 144, 226, 0.1);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
             color: var(--primary);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .hero h1 {
-            font-size: 72px;
-            line-height: 1.05;
-            margin-bottom: 25px;
-            letter-spacing: 0.5px;
+            font-size: 64px;
+            line-height: 1.1;
+            margin-bottom: 20px;
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, #fff, var(--primary));
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 20px;
-            line-height: 1.8;
-            color: var(--text-muted);
-            margin-bottom: 40px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin-bottom: 35px;
+            opacity: 0.9;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
 
         .btn-primary, .btn-secondary {
-            padding: 16px 36px;
-            border-radius: 12px;
-            font-size: 18px;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
             text-decoration: none;
             transition: all 0.3s;
-            display: inline-block;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: var(--primary);
             color: #fff;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.4);
+            background: #3A7CC8;
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
         }
 
         .btn-secondary {
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #fff;
+            border: 1px solid var(--primary);
+            color: var(--primary);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.35);
+            background: var(--primary);
+            color: #fff;
         }
 
         .hero-image {
@@ -275,188 +240,171 @@
             right: 80px;
             top: 50%;
             transform: translateY(-50%);
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(219, 112, 147, 0.1));
-            border-radius: 50%; /* Rounded for softer, romantic feel */
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            width: 450px;
+            height: 450px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 40px rgba(0, 31, 63, 0.2);
         }
 
         .hero-image svg {
-            width: 200px;
-            height: 200px;
-            color: var(--primary);
-            opacity: 0.85;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            width: 160px;
+            height: 160px;
+            color: #fff;
         }
 
         section {
             position: relative;
-            padding: 120px 80px;
+            padding: 100px 80px;
             z-index: 10;
         }
 
         .section-header {
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto 80px;
+            max-width: 700px;
+            margin: 0 auto 60px;
         }
 
         .section-label {
             color: var(--primary);
-            font-size: 16px;
-            letter-spacing: 2px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .section-title {
-            font-size: 52px;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
+            font-size: 44px;
+            margin-bottom: 15px;
         }
 
         .section-description {
-            font-size: 19px;
-            color: var(--text-muted);
-            line-height: 1.8;
+            font-size: 18px;
+            color: var(--text-dark);
+            opacity: 0.8;
+            line-height: 1.6;
         }
 
         /* Stats */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
         }
 
         .stat-number {
-            font-size: 52px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 44px;
+            font-weight: 800;
+            color: var(--primary);
         }
 
         .stat-label {
             font-size: 16px;
-            color: var(--text-soft);
-            margin-top: 10px;
+            color: var(--text-dark);
+            opacity: 0.8;
         }
 
         /* Features */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 25px;
+            background: #fff;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 31, 63, 0.1);
             transition: all 0.3s;
         }
 
         .feature-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(255, 105, 180, 0.35);
-            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 31, 63, 0.15);
         }
 
         .feature-icon {
-            width: 65px;
-            height: 65px;
+            width: 50px;
+            height: 50px;
             color: var(--primary);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .feature-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
+            font-size: 22px;
+            margin-bottom: 10px;
         }
 
         .feature-card p {
-            color: var(--text-muted);
-            line-height: 1.8;
-            font-size: 16px;
+            font-size: 15px;
+            color: var(--text-dark);
+            opacity: 0.7;
+            line-height: 1.6;
         }
 
         /* Portfolio */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .portfolio-item {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
+            background: #fff;
+            border-radius: 15px;
             overflow: hidden;
-            height: 420px;
             position: relative;
+            box-shadow: 0 10px 20px rgba(0, 31, 63, 0.1);
             transition: all 0.3s;
-            cursor: pointer;
         }
 
         .portfolio-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(255, 105, 180, 0.35);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 31, 63, 0.15);
         }
 
         .portfolio-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 40px;
-            background: linear-gradient(180deg, transparent 0%, rgba(30, 30, 47, 0.95) 60%);
+            padding: 30px;
         }
 
         .portfolio-tag {
             display: inline-block;
-            background: rgba(255, 105, 180, 0.15);
-            border: 1px solid rgba(255, 105, 180, 0.3);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 14px;
+            background: rgba(74, 144, 226, 0.1);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 13px;
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .portfolio-item h3 {
-            font-size: 30px;
-            margin-bottom: 12px;
+            font-size: 26px;
+            margin-bottom: 10px;
         }
 
         .portfolio-item p {
-            color: var(--text-muted);
-            font-size: 16px;
-            line-height: 1.7;
+            font-size: 15px;
+            color: var(--text-dark);
+            opacity: 0.7;
         }
 
         /* Portfolio Modal */
         .portfolio-modal {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.7);
             display: none;
             align-items: center;
             justify-content: center;
@@ -464,155 +412,156 @@
         }
 
         .modal-content {
-            background: var(--dark);
-            border: 2px solid var(--primary);
-            border-radius: 25px;
-            padding: 40px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
             max-width: 800px;
             width: 90%;
             text-align: center;
             position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 28px;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
             cursor: pointer;
-            color: #fff;
+            color: var(--text-dark);
         }
 
         .modal-video {
             width: 100%;
             height: 400px;
-            margin-bottom: 30px;
-            border-radius: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
         }
 
         /* Pricing */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .pricing-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 45px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 20px rgba(0, 31, 63, 0.1);
             transition: all 0.3s;
             position: relative;
         }
 
         .pricing-card.featured {
-            border: 2px solid var(--primary);
-            background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(219, 112, 147, 0.05));
             transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 31, 63, 0.15);
         }
 
         .pricing-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(255, 105, 180, 0.35);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 31, 63, 0.15);
         }
 
         .pricing-badge {
             position: absolute;
-            top: -15px;
+            top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            padding: 8px 24px;
+            background: var(--primary);
+            padding: 6px 20px;
             border-radius: 30px;
-            font-size: 14px;
-            color: white;
+            font-size: 12px;
+            color: #fff;
         }
 
         .price {
-            font-size: 60px;
-            margin: 20px 0 30px;
-            letter-spacing: -1px;
+            font-size: 52px;
+            margin: 15px 0 25px;
+            color: var(--primary);
         }
 
         .pricing-features li {
-            padding: 12px 0;
-            font-size: 16px;
-            color: var(--text-muted);
+            padding: 10px 0;
+            font-size: 15px;
+            color: var(--text-dark);
+            opacity: 0.8;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .pricing-features li::before {
-            content: '❤️'; /* Heart for couple theme */
+            content: '✓';
             color: var(--primary);
-            font-size: 18px;
+            font-weight: bold;
         }
 
         /* Contact */
         .contact-container {
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 60px;
-            border-radius: 25px;
+            background: #fff;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 31, 63, 0.1);
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 10px;
-            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 15px;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 16px 20px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            color: #fff;
-            font-family: 'Kalam', cursive;
-            font-size: 16px;
+            padding: 14px 18px;
+            background: var(--light);
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
             transition: all 0.3s;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
-            outline: none;
             border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.08);
         }
 
         .submit-btn {
             width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 16px;
+            background: var(--primary);
             border: none;
-            border-radius: 12px;
+            border-radius: 30px;
             color: #fff;
-            font-size: 18px;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .submit-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.4);
+            background: #3A7CC8;
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
         }
 
         /* Footer */
         footer {
-            padding: 100px 80px 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 80px 80px 30px;
+            background: var(--dark);
+            color: var(--text);
             z-index: 10;
             position: relative;
         }
@@ -623,79 +572,76 @@
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 60px;
-            margin-bottom: 60px;
+            gap: 50px;
+            margin-bottom: 50px;
         }
 
         .footer-logo {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        .footer-logo span {
+            font-size: 28px;
+            font-weight: 800;
             color: var(--primary);
+            margin-bottom: 15px;
         }
 
         .footer-info p {
-            max-width: 400px;
-            color: var(--text-soft);
-            line-height: 1.8;
-            font-size: 16px;
+            max-width: 350px;
+            font-size: 15px;
+            opacity: 0.8;
         }
 
         .footer-columns {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 60px;
+            gap: 50px;
         }
 
         .footer-column h4 {
-            font-size: 18px;
-            margin-bottom: 25px;
-            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
         }
 
         .footer-column a {
             display: block;
-            margin-bottom: 14px;
+            margin-bottom: 10px;
             color: var(--text-soft);
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
             transition: color 0.3s;
         }
 
         .footer-column a:hover {
-            color: #fff;
+            color: var(--text);
         }
 
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 20px;
-            font-size: 14px;
-            color: var(--text-soft);
+            gap: 15px;
+            font-size: 13px;
+            opacity: 0.8;
         }
 
         .footer-bottom a {
             color: var(--text-soft);
             text-decoration: none;
-            margin-left: 30px;
+            margin-left: 20px;
         }
 
         .footer-bottom a:hover {
-            color: #fff;
+            color: var(--text);
         }
 
-        /* Responsive Adjustments */
+        /* Responsive */
         @media (max-width: 1024px) {
             nav, section, footer { padding-left: 40px; padding-right: 40px; }
-            .hero h1 { font-size: 60px; }
+            .hero h1 { font-size: 52px; }
             .hero-image { display: none; }
             .features-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr); }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -704,128 +650,19 @@
 
         @media (max-width: 768px) {
             nav, section, footer { padding-left: 20px; padding-right: 20px; }
-            .hero h1 { font-size: 48px; }
-            .section-title { font-size: 42px; }
+            .hero h1 { font-size: 40px; }
+            .section-title { font-size: 36px; }
             .features-grid, .portfolio-grid, .pricing-grid { grid-template-columns: 1fr; }
-            .nav-menu { gap: 30px; }
-            .lang-switcher { margin-left: 0; }
+            .nav-menu { gap: 25px; }
             .footer-content { flex-direction: column; }
-            .footer-columns { grid-template-columns: 1fr; gap: 40px; }
+            .footer-columns { grid-template-columns: 1fr; gap: 30px; }
             .footer-bottom { flex-direction: column; text-align: center; }
         }
 
         @media (max-width: 640px) {
-            nav, section, footer {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            .hero {
-                padding: 0 15px;
-                text-align: center;
-            }
-
-            .hero-content {
-                max-width: 100%;
-            }
-
-            .hero h1 {
-                font-size: 42px !important;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .hero-buttons a {
-                width: 100%;
-                text-align: center;
-            }
-
-            .btn-primary, .btn-secondary {
-                padding: 16px 24px;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .stat-number {
-                font-size: 46px;
-            }
-
-            .section-title {
-                font-size: 38px !important;
-            }
-
-            .section-description {
-                font-size: 17px;
-            }
-
-            .nav-menu {
-                gap: 20px;
-                font-size: 16px;
-            }
-
-            .lang-switcher {
-                gap: 8px;
-            }
-
-            .lang-btn {
-                padding: 6px 12px;
-                font-size: 14px;
-            }
-
-            .contact-container {
-                padding: 40px 20px;
-            }
-
-            .form-group input,
-            .form-group textarea {
-                padding: 14px 16px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 38px !important;
-            }
-
-            .hero-badge {
-                font-size: 14px;
-                padding: 8px 16px;
-            }
-
-            .section-title {
-                font-size: 34px !important;
-            }
-
-            .portfolio-content {
-                padding: 30px 20px;
-            }
-
-            .portfolio-item h3 {
-                font-size: 26px;
-            }
-
-            .price {
-                font-size: 52px;
-            }
-
-            .pricing-card {
-                padding: 35px 25px;
-            }
-
-            .pricing-badge {
-                font-size: 13px;
-                padding: 6px 20px;
-            }
+            .hero h1 { font-size: 36px !important; }
+            .section-title { font-size: 32px !important; }
+            .contact-container { padding: 40px 20px; }
         }
 
         .btn-primary, .btn-secondary, .submit-btn, .nav-cta {
@@ -842,14 +679,14 @@
         .hamburger {
             display: none;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
             cursor: pointer;
         }
 
         .hamburger span {
-            width: 30px;
+            width: 28px;
             height: 3px;
-            background: var(--text);
+            background: var(--text-dark);
             transition: all 0.3s;
         }
 
@@ -869,8 +706,7 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: rgba(30, 30, 47, 0.98);
-            backdrop-filter: blur(20px);
+            background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -889,22 +725,23 @@
 
         .mobile-nav-links {
             flex-direction: column;
-            gap: 40px;
-            margin-bottom: 60px;
+            gap: 30px;
+            margin-bottom: 50px;
         }
 
         .mobile-nav-links a {
-            font-size: 30px;
+            font-size: 24px;
+            color: var(--text-dark);
         }
 
         .mobile-lang {
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         .mobile-lang .lang-btn {
-            padding: 12px 24px;
-            font-size: 18px;
+            padding: 10px 20px;
+            font-size: 16px;
         }
 
         @media (max-width: 768px) {
@@ -917,23 +754,16 @@
             }
 
             nav {
-                padding: 20px 20px;
-            }
-
-            nav.scrolled {
                 padding: 15px 20px;
             }
 
             .logo {
-                font-size: 28px;
+                font-size: 24px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
     <div class="bg-container">
         <div class="bg-shape shape1"></div>
         <div class="bg-shape shape2"></div>
@@ -942,7 +772,7 @@
 
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">Se<span>nada</span></div>
+            <div class="logo">Senada</div>
 
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -983,8 +813,8 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge" data-id="hero-badge">Website Personal untuk Momen Spesial</div>
-            <h1 data-id="hero-title">Bikin <span class="gradient-text">Momen Istimewa</span> Lebih Berkesan</h1>
-            <p data-id="hero-desc">Kami menciptakan website interaktif yang dirancang khusus untuk anniversary, birthday surprise, proposal, atau ucapan cinta yang tak terlupakan.</p>
+            <h1 data-id="hero-title">Buat <span class="gradient-text">Momen</span> Lebih Berkesan</h1>
+            <p data-id="hero-desc">Kami desain website interaktif khusus untuk anniversary, surprise ulang tahun, proposal, atau ungkapan cinta yang unforgettable.</p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn-primary" data-id="hero-cta1">Mulai Project</a>
                 <a href="#portfolio" class="btn-secondary" data-id="hero-cta2">Lihat Portfolio</a>
@@ -1021,39 +851,39 @@
     <section class="features" id="features">
         <div class="section-header">
             <div class="section-label" data-id="features-label">Keunggulan Kami</div>
-            <h2 class="section-title" data-id="features-title">Mengapa Memilih Senada</h2>
-            <p class="section-description" data-id="features-desc">Kami tidak hanya membuat website, tapi pengalaman emosional yang personal dan berkesan.</p>
+            <h2 class="section-title" data-id="features-title">Mengapa Senada?</h2>
+            <p class="section-description" data-id="features-desc">Kami ciptakan pengalaman digital yang personal dan emosional untuk momen spesial Anda.</p>
         </div>
         <div class="features-grid">
             <div class="feature-card">
                 <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
                 <h3 data-id="feature1-title">Desain Custom</h3>
-                <p data-id="feature1-desc">Desain dibuat sepenuhnya sesuai cerita dan kepribadian Anda, tanpa template generik.</p>
+                <p data-id="feature1-desc">Desain tailor-made berdasarkan cerita dan personality Anda, no generic templates.</p>
             </div>
             <div class="feature-card">
                 <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 <h3 data-id="feature2-title">Interaktif Tinggi</h3>
-                <p data-id="feature2-desc">Animasi halus, micro-interactions, dan elemen kejutan yang membuat pengalaman browsing istimewa.</p>
+                <p data-id="feature2-desc">Animasi smooth, micro-interactions, dan elemen surprise untuk experience unik.</p>
             </div>
             <div class="feature-card">
                 <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                <h3 data-id="feature3-title">Responsif Semua Perangkat</h3>
-                <p data-id="feature3-desc">Tampilan sempurna di desktop, tablet, maupun smartphone.</p>
+                <h3 data-id="feature3-title">Responsif Semua Device</h3>
+                <p data-id="feature3-desc">Tampilan perfect di desktop, tablet, dan smartphone.</p>
             </div>
             <div class="feature-card">
                 <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
                 <h3 data-id="feature4-title">Integrasi Media</h3>
-                <p data-id="feature4-desc">Dukungan lagu favorit, video kenangan, dan pesan suara untuk sentuhan personal.</p>
+                <p data-id="feature4-desc">Support lagu favorit, video memories, dan voice messages untuk touch personal.</p>
             </div>
             <div class="feature-card">
                 <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 <h3 data-id="feature5-title">Pengerjaan Cepat</h3>
-                <p data-id="feature5-desc">Timeline fleksibel — bisa cepat untuk kejutan mendadak atau detail maksimal sesuai keinginan.</p>
+                <p data-id="feature5-desc">Timeline flexible — fast for last-minute surprises or detailed perfection.</p>
             </div>
             <div class="feature-card">
                 <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                 <h3 data-id="feature6-title">Privasi Terjamin</h3>
-                <p data-id="feature6-desc">Website dapat dilindungi kata sandi — hanya orang terkasih yang dapat mengakses.</p>
+                <p data-id="feature6-desc">Password protection — only your loved ones can access.</p>
             </div>
         </div>
     </section>
@@ -1061,42 +891,41 @@
     <section class="portfolio" id="portfolio">
         <div class="section-header">
             <div class="section-label" data-id="portfolio-label">Portfolio</div>
-            <h2 class="section-title" data-id="portfolio-title">Karya yang Telah Kami Wujudkan</h2>
-            <p class="section-description" data-id="portfolio-desc">Beberapa proyek nyata dari klien yang puas dengan hasil akhir.</p>
+            <h2 class="section-title" data-id="portfolio-title">Karya Kami</h2>
+            <p class="section-description" data-id="portfolio-desc">Lihat proyek real dari klien happy kami.</p>
         </div>
         <div class="portfolio-grid">
             <div class="portfolio-item" onclick="openPortfolioModal(1)">
                 <div class="portfolio-content">
                     <div class="portfolio-tag">Anniversary</div>
                     <h3>Rayhan & Dea</h3>
-                    <p>Timeline interaktif dengan lebih dari 50 kenangan, ilustrasi custom, dan playlist musik dari hari pertama bertemu.</p>
+                    <p>Interactive timeline dengan 50+ memories, custom illustrations, dan playlist dari first meet.</p>
                 </div>
             </div>
             <div class="portfolio-item" onclick="openPortfolioModal(2)">
                 <div class="portfolio-content">
                     <div class="portfolio-tag">Birthday</div>
                     <h3>Surprise untuk Alya</h3>
-                    <p>Website ulang tahun dengan countdown, kompilasi video dari teman-teman, dan mini game yang mengungkap pesan kejutan.</p>
+                    <p>Birthday site dengan countdown, video compilation dari friends, dan mini game reveal message.</p>
                 </div>
             </div>
             <div class="portfolio-item" onclick="openPortfolioModal(3)">
                 <div class="portfolio-content">
                     <div class="portfolio-tag">Proposal</div>
                     <h3>Proposal Kevin</h3>
-                    <p>Perjalanan interaktif dengan peta kenangan, petunjuk tersembunyi, dan momen reveal dramatis. She said YES!</p>
+                    <p>Interactive journey dengan memory map, hidden clues, dan dramatic reveal. She said YES!</p>
                 </div>
             </div>
             <div class="portfolio-item" onclick="openPortfolioModal(4)">
                 <div class="portfolio-content">
                     <div class="portfolio-tag">Hadiah</div>
                     <h3>Virtual Love Letter</h3>
-                    <p>Interpretasi modern surat cinta klasik dengan animasi halaman, tipografi tulisan tangan, dan efek segel lilin digital.</p>
+                    <p>Modern take on love letters dengan page animations, handwritten typography, dan digital wax seal.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Modals -->
     <div class="portfolio-modal" id="portfolioModal1">
         <div class="modal-content">
             <span class="modal-close" onclick="closePortfolioModal()">&times;</span>
@@ -1129,56 +958,56 @@
     <section class="pricing" id="pricing">
         <div class="section-header">
             <div class="section-label" data-id="pricing-label">Paket Harga</div>
-            <h2 class="section-title" data-id="pricing-title">Pilih Paket yang Sesuai</h2>
-            <p class="section-description" data-id="pricing-desc">Harga transparan tanpa biaya tersembunyi.</p>
+            <h2 class="section-title" data-id="pricing-title">Pilih Paket Ideal</h2>
+            <p class="section-description" data-id="pricing-desc">Harga clear, no hidden fees.</p>
         </div>
         <div class="pricing-grid">
             <div class="pricing-card">
                 <h3>Starter</h3>
-                <p class="description" style="color: var(--text-soft); margin-bottom: 30px;" data-id="pricing1-desc">Cocok untuk kejutan sederhana namun berkesan</p>
+                <p class="description" data-id="pricing1-desc">Ideal for simple yet meaningful surprises</p>
                 <div class="price">Rp599.000</div>
                 <ul class="pricing-features" data-id="pricing1-features">
-                    <li>Website satu halaman</li>
-                    <li>Animasi dasar</li>
-                    <li>Galeri foto (15 foto)</li>
-                    <li>Pemutar musik</li>
-                    <li>Responsif mobile</li>
-                    <li>2 kali revisi</li>
-                    <li>Pengerjaan 3 hari</li>
+                    <li>Single page website</li>
+                    <li>Basic animations</li>
+                    <li>Photo gallery (15 photos)</li>
+                    <li>Music player</li>
+                    <li>Mobile responsive</li>
+                    <li>2 revisions</li>
+                    <li>3 days turnaround</li>
                 </ul>
-                <a href="https://wa.me/+6281234567890?text=Saya%20tertarik%20dengan%20paket%20Starter" class="btn-primary" style="width: 100%; text-align: center; display: block; margin-top: 30px;" data-id="pricing1-btn">Pilih Paket</a>
+                <a href="https://wa.me/+6281234567890?text=Saya%20tertarik%20dengan%20paket%20Starter" class="btn-primary" data-id="pricing1-btn">Pilih Paket</a>
             </div>
             <div class="pricing-card featured">
-                <div class="pricing-badge" data-id="pricing-badge">PALING POPULER</div>
+                <div class="pricing-badge" data-id="pricing-badge">POPULAR</div>
                 <h3>Premium</h3>
-                <p class="description" style="color: var(--text-soft); margin-bottom: 30px;" data-id="pricing2-desc">Pilihan favorit mayoritas klien</p>
+                <p class="description" data-id="pricing2-desc">Favorite choice for most clients</p>
                 <div class="price">Rp999.000</div>
                 <ul class="pricing-features" data-id="pricing2-features">
-                    <li>Website multi-halaman</li>
-                    <li>Animasi lanjutan</li>
-                    <li>Galeri foto tanpa batas</li>
-                    <li>Pemutar musik & video</li>
-                    <li>Timeline interaktif</li>
-                    <li>Ilustrasi custom</li>
-                    <li>3 kali revisi</li>
-                    <li>Pengerjaan 5 hari</li>
+                    <li>Multi-page website</li>
+                    <li>Advanced animations</li>
+                    <li>Unlimited photo gallery</li>
+                    <li>Music & video player</li>
+                    <li>Interactive timeline</li>
+                    <li>Custom illustrations</li>
+                    <li>3 revisions</li>
+                    <li>5 days turnaround</li>
                 </ul>
-                <a href="https://wa.me/+6281234567890?text=Saya%20tertarik%20dengan%20paket%20Premium" class="btn-primary" style="width: 100%; text-align: center; display: block; margin-top: 30px;" data-id="pricing2-btn">Pilih Paket</a>
+                <a href="https://wa.me/+6281234567890?text=Saya%20tertarik%20dengan%20paket%20Premium" class="btn-primary" data-id="pricing2-btn">Pilih Paket</a>
             </div>
             <div class="pricing-card">
                 <h3>Elite</h3>
-                <p class="description" style="color: var(--text-soft); margin-bottom: 30px;" data-id="pricing3-desc">Tanpa kompromi, pengalaman terbaik</p>
+                <p class="description" data-id="pricing3-desc">Ultimate experience, no compromises</p>
                 <div class="price">Rp1.900.000</div>
                 <ul class="pricing-features" data-id="pricing3-features">
-                    <li>Semua fitur Premium</li>
-                    <li>Proteksi kata sandi</li>
-                    <li>Integrasi hadiah digital</li>
-                    <li>Prioritas pengerjaan</li>
-                    <li>Revisi tanpa batas</li>
-                    <li>Domain custom (.com/.id)</li>
-                    <li>Hosting 1 tahun</li>
+                    <li>All Premium features</li>
+                    <li>Password protection</li>
+                    <li>Digital gift integration</li>
+                    <li>Priority turnaround</li>
+                    <li>Unlimited revisions</li>
+                    <li>Custom domain (.com/.id)</li>
+                    <li>1 year hosting</li>
                 </ul>
-                <a href="https://wa.me/+6281234567890?text=Saya%20tertarik%20dengan%20paket%20Elite" class="btn-primary" style="width: 100%; text-align: center; display: block; margin-top: 30px;" data-id="pricing3-btn">Pilih Paket</a>
+                <a href="https://wa.me/+6281234567890?text=Saya%20tertarik%20dengan%20paket%20Elite" class="btn-primary" data-id="pricing3-btn">Pilih Paket</a>
             </div>
         </div>
     </section>
@@ -1186,8 +1015,8 @@
     <section class="contact" id="contact">
         <div class="section-header">
             <div class="section-label" data-id="contact-label">Hubungi Kami</div>
-            <h2 class="section-title" data-id="contact-title">Wujudkan Ide Anda</h2>
-            <p class="section-description" data-id="contact-desc">Ceritakan rencana kejutan Anda, kami siap membantu setiap detailnya.</p>
+            <h2 class="section-title" data-id="contact-title">Realisasikan Ide Anda</h2>
+            <p class="section-description" data-id="contact-desc">Share plan surprise Anda, kami ready bantu detailnya.</p>
         </div>
         <div class="contact-container">
             <form id="contactForm">
@@ -1215,8 +1044,8 @@
     <footer>
         <div class="footer-content">
             <div class="footer-info">
-                <div class="footer-logo">Se<span>nada</span></div>
-                <p data-id="footer-desc">Menciptakan pengalaman digital yang emosional dan abadi untuk setiap momen berharga dalam hidup Anda.</p>
+                <div class="footer-logo">Senada</div>
+                <p data-id="footer-desc">Crafting emotional digital experiences for your precious moments.</p>
             </div>
             <div class="footer-columns">
                 <div class="footer-column">
@@ -1227,35 +1056,34 @@
                     <a href="#contact">Kontak</a>
                 </div>
                 <div class="footer-column">
-                    <h4 data-id="footer-social">Sosial Media</h4>
+                    <h4 data-id="footer-social">Social Media</h4>
                     <a href="#">Instagram</a>
                     <a href="#">TikTok</a>
                     <a href="#">WhatsApp</a>
                 </div>
                 <div class="footer-column">
-                    <h4 data-id="footer-support">Dukungan</h4>
+                    <h4 data-id="footer-support">Support</h4>
                     <a href="#">FAQ</a>
-                    <a href="#">Syarat & Ketentuan</a>
-                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Privacy Policy</a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 Senada Studio Part of WebInAja. All rights reserved.</p>
+            <p>© 2025 Senada Studio. All rights reserved.</p>
             <div>
-                <a href="#">Kebijakan Privasi</a>
-                <a href="#">Syarat & Ketentuan</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Language Data
         const translations = {
             id: {
                 "hero-badge": "Website Personal untuk Momen Spesial",
-                "hero-title": "Bikin <span class=\"gradient-text\">Momen Istimewa</span> Lebih Berkesan",
-                "hero-desc": "Kami menciptakan website interaktif yang dirancang khusus untuk anniversary, birthday surprise, proposal, atau ucapan cinta yang tak terlupakan.",
+                "hero-title": "Buat <span class=\"gradient-text\">Momen</span> Lebih Berkesan",
+                "hero-desc": "Kami desain website interaktif khusus untuk anniversary, surprise ulang tahun, proposal, atau ungkapan cinta yang unforgettable.",
                 "hero-cta1": "Mulai Project",
                 "hero-cta2": "Lihat Portfolio",
                 "nav-features": "Layanan",
@@ -1267,50 +1095,51 @@
                 "stat3": "Respon Cepat",
                 "stat4": "Rating Klien",
                 "features-label": "Keunggulan Kami",
-                "features-title": "Mengapa Memilih Senada",
-                "features-desc": "Kami tidak hanya membuat website, tapi pengalaman emosional yang personal dan berkesan.",
+                "features-title": "Mengapa Senada?",
+                "features-desc": "Kami ciptakan pengalaman digital yang personal dan emosional untuk momen spesial Anda.",
                 "feature1-title": "Desain Custom",
-                "feature1-desc": "Desain dibuat sepenuhnya sesuai cerita dan kepribadian Anda, tanpa template generik.",
+                "feature1-desc": "Desain tailor-made berdasarkan cerita dan personality Anda, no generic templates.",
                 "feature2-title": "Interaktif Tinggi",
-                "feature2-desc": "Animasi halus, micro-interactions, dan elemen kejutan yang membuat pengalaman browsing istimewa.",
-                "feature3-title": "Responsif Semua Perangkat",
-                "feature3-desc": "Tampilan sempurna di desktop, tablet, maupun smartphone.",
+                "feature2-desc": "Animasi smooth, micro-interactions, dan elemen surprise untuk experience unik.",
+                "feature3-title": "Responsif Semua Device",
+                "feature3-desc": "Tampilan perfect di desktop, tablet, dan smartphone.",
                 "feature4-title": "Integrasi Media",
-                "feature4-desc": "Dukungan lagu favorit, video kenangan, dan pesan suara untuk sentuhan personal.",
+                "feature4-desc": "Support lagu favorit, video memories, dan voice messages untuk touch personal.",
                 "feature5-title": "Pengerjaan Cepat",
-                "feature5-desc": "Timeline fleksibel — bisa cepat untuk kejutan mendadak atau detail maksimal sesuai keinginan.",
+                "feature5-desc": "Timeline flexible — fast for last-minute surprises or detailed perfection.",
                 "feature6-title": "Privasi Terjamin",
-                "feature6-desc": "Website dapat dilindungi kata sandi — hanya orang terkasih yang dapat mengakses.",
+                "feature6-desc": "Password protection — only your loved ones can access.",
                 "portfolio-label": "Portfolio",
-                "portfolio-title": "Karya yang Telah Kami Wujudkan",
-                "portfolio-desc": "Beberapa proyek nyata dari klien yang puas dengan hasil akhir.",
+                "portfolio-title": "Karya Kami",
+                "portfolio-desc": "Lihat proyek real dari klien happy kami.",
                 "pricing-label": "Paket Harga",
-                "pricing-title": "Pilih Paket yang Sesuai",
-                "pricing-desc": "Harga transparan tanpa biaya tersembunyi.",
-                "pricing-badge": "PALING POPULER",
-                "pricing1-desc": "Cocok untuk kejutan sederhana namun berkesan",
-                "pricing2-desc": "Pilihan favorit mayoritas klien",
-                "pricing3-desc": "Tanpa kompromi, pengalaman terbaik",
+                "pricing-title": "Pilih Paket Ideal",
+                "pricing-desc": "Harga clear, no hidden fees.",
+                "pricing-badge": "POPULAR",
+                "pricing1-desc": "Ideal for simple yet meaningful surprises",
+                "pricing2-desc": "Favorite choice for most clients",
+                "pricing3-desc": "Ultimate experience, no compromises",
                 "pricing1-btn": "Pilih Paket",
                 "pricing2-btn": "Pilih Paket",
                 "pricing3-btn": "Pilih Paket",
                 "contact-label": "Hubungi Kami",
-                "contact-title": "Wujudkan Ide Anda",
-                "contact-desc": "Ceritakan rencana kejutan Anda, kami siap membantu setiap detailnya.",
+                "contact-title": "Realisasikan Ide Anda",
+                "contact-desc": "Share plan surprise Anda, kami ready bantu detailnya.",
                 "form-name": "Nama Lengkap",
                 "form-email": "Email",
                 "form-event": "Jenis Acara",
                 "form-message": "Ceritakan Rencana Anda",
                 "form-submit": "Kirim Pesan",
-                "footer-desc": "Menciptakan pengalaman digital yang emosional dan abadi untuk setiap momen berharga dalam hidup Anda.",
+                "footer-desc": "Crafting emotional digital experiences for your precious moments.",
                 "footer-nav": "Navigasi",
-                "footer-social": "Sosial Media",
-                "footer-support": "Dukungan"
+                "footer-social": "Social Media",
+                "footer-support": "Support"
             },
             en: {
+                // English translations here, similar structure
                 "hero-badge": "Personal Websites for Special Moments",
-                "hero-title": "Make <span class=\"gradient-text\">Special Moments</span> More Memorable",
-                "hero-desc": "We create custom interactive websites for anniversaries, birthday surprises, proposals, or unforgettable love messages.",
+                "hero-title": "Make <span class=\"gradient-text\">Moments</span> More Memorable",
+                "hero-desc": "We design interactive websites custom for anniversaries, birthday surprises, proposals, or unforgettable love expressions.",
                 "hero-cta1": "Start Project",
                 "hero-cta2": "View Portfolio",
                 "nav-features": "Features",
@@ -1321,50 +1150,49 @@
                 "stat2": "Satisfaction Rate",
                 "stat3": "Fast Response",
                 "stat4": "Client Rating",
-                "features-label": "Why Choose Us",
-                "features-title": "Why Choose Senada",
-                "features-desc": "We don't just build websites — we craft personal, emotional experiences.",
+                "features-label": "Our Advantages",
+                "features-title": "Why Senada?",
+                "features-desc": "We create personal and emotional digital experiences for your special moments.",
                 "feature1-title": "Custom Design",
-                "feature1-desc": "Fully tailored design based on your story and personality — no generic templates.",
-                "feature2-title": "Highly Interactive",
-                "feature2-desc": "Smooth animations, micro-interactions, and surprise elements for an unforgettable experience.",
-                "feature3-title": "Fully Responsive",
-                "feature3-desc": "Perfect display on desktop, tablet, and mobile devices.",
+                "feature1-desc": "Tailor-made design based on your story and personality, no generic templates.",
+                "feature2-title": "High Interactive",
+                "feature2-desc": "Smooth animations, micro-interactions, and surprise elements for unique experience.",
+                "feature3-title": "Responsive All Devices",
+                "feature3-desc": "Perfect display on desktop, tablet, and smartphone.",
                 "feature4-title": "Media Integration",
-                "feature4-desc": "Support for favorite songs, memory videos, and voice messages for a personal touch.",
-                "feature5-title": "Fast Delivery",
-                "feature5-desc": "Flexible timeline — quick for last-minute surprises or detailed for maximum perfection.",
-                "feature6-title": "Privacy Protected",
-                "feature6-desc": "Password-protected option — accessible only to your loved ones.",
+                "feature4-desc": "Support favorite songs, memory videos, and voice messages for personal touch.",
+                "feature5-title": "Fast Turnaround",
+                "feature5-desc": "Flexible timeline — fast for last-minute surprises or detailed perfection.",
+                "feature6-title": "Guaranteed Privacy",
+                "feature6-desc": "Password protection — only your loved ones can access.",
                 "portfolio-label": "Portfolio",
-                "portfolio-title": "Projects We've Created",
-                "portfolio-desc": "Real projects from satisfied clients.",
-                "pricing-label": "Pricing",
-                "pricing-title": "Choose Your Package",
-                "pricing-desc": "Transparent pricing with no hidden fees.",
-                "pricing-badge": "MOST POPULAR",
-                "pricing1-desc": "Perfect for simple yet meaningful surprises",
-                "pricing2-desc": "Most popular choice among clients",
-                "pricing3-desc": "No compromises — the ultimate experience",
+                "portfolio-title": "Our Works",
+                "portfolio-desc": "See real projects from our happy clients.",
+                "pricing-label": "Pricing Packages",
+                "pricing-title": "Choose Ideal Package",
+                "pricing-desc": "Clear pricing, no hidden fees.",
+                "pricing-badge": "POPULAR",
+                "pricing1-desc": "Ideal for simple yet meaningful surprises",
+                "pricing2-desc": "Favorite choice for most clients",
+                "pricing3-desc": "Ultimate experience, no compromises",
                 "pricing1-btn": "Choose Package",
                 "pricing2-btn": "Choose Package",
                 "pricing3-btn": "Choose Package",
                 "contact-label": "Contact Us",
-                "contact-title": "Bring Your Idea to Life",
-                "contact-desc": "Tell us about your surprise plan — we're ready to help with every detail.",
+                "contact-title": "Realize Your Idea",
+                "contact-desc": "Share your surprise plan, we're ready to help with the details.",
                 "form-name": "Full Name",
                 "form-email": "Email",
                 "form-event": "Event Type",
-                "form-message": "Tell Us Your Plan",
+                "form-message": "Tell Your Plan",
                 "form-submit": "Send Message",
-                "footer-desc": "Creating emotional and timeless digital experiences for every precious moment in your life.",
+                "footer-desc": "Crafting emotional digital experiences for your precious moments.",
                 "footer-nav": "Navigation",
                 "footer-social": "Social Media",
                 "footer-support": "Support"
             }
         };
 
-        // Language Switcher
         const langBtns = document.querySelectorAll('.lang-btn');
         langBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1375,73 +1203,40 @@
 
                 Object.keys(translations[lang]).forEach(key => {
                     const el = document.querySelector(`[data-id="${key}"]`);
-                    if (el) {
-                        el.innerHTML = translations[lang][key];
-                    }
+                    if (el) el.innerHTML = translations[lang][key];
                 });
             });
         });
 
-        // Custom cursor
-        const cursor = document.querySelector('.cursor');
-        const follower = document.querySelector('.cursor-follower');
-        document.addEventListener('mousemove', e => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            setTimeout(() => {
-                follower.style.left = e.clientX + 'px';
-                follower.style.top = e.clientY + 'px';
-            }, 50);
-        });
-
-        // Navbar scroll
         window.addEventListener('scroll', () => {
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', e => {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
+                document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
         });
 
-        // Form submission to WhatsApp
         document.getElementById('contactForm').addEventListener('submit', e => {
             e.preventDefault();
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const event = document.getElementById('event').value;
             const message = document.getElementById('message').value;
-            const waMessage = `Halo Tim Senada! 👋%0A%0A
-Saya tertarik dengan jasa pembuatan website personal untuk momen spesial.%0A%0A
-📋 *Detail Saya:*%0A
-• Nama: ${name}%0A
-• Email: ${email}%0A
-• Jenis Acara: ${event}%0A%0A
-💌 *Pesan/Rencana Kejutan:*%0A
-${message}%0A%0A
-Terima kasih, mohon dibantu info paket dan langkah selanjutnya ya! 😊`;
-            const waUrl = `https://wa.me/+6285708989602?text=${waMessage}`;
-            window.open(waUrl, '_blank');
+            const waMessage = `Halo Senada!%0AName: ${name}%0AEmail: ${email}%0AEvent: ${event}%0AMessage: ${message}`;
+            window.open(`https://wa.me/+6281234567890?text=${waMessage}`, '_blank');
         });
 
-        // Portfolio Modal
         function openPortfolioModal(id) {
             document.getElementById(`portfolioModal${id}`).style.display = 'flex';
         }
 
         function closePortfolioModal() {
-            document.querySelectorAll('.portfolio-modal').forEach(modal => {
-                modal.style.display = 'none';
-            });
+            document.querySelectorAll('.portfolio-modal').forEach(modal => modal.style.display = 'none');
         }
 
-        // Hamburger menu
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
 
