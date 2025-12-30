@@ -25,7 +25,40 @@
         .shine::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.7s; }
         .shine:hover::before { left: 100%; }
 
-        /* Chat Widget - FULLY RESPONSIVE */
+        /* Slider Styles */
+        .slider-container { overflow: hidden; width: 100%; }
+        .slider-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+            padding: 0 1rem;
+        }
+        .slider-item {
+            min-width: 380px;
+            max-width: 380px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 1024px) {
+            .slider-item { min-width: 340px; max-width: 340px; }
+        }
+        @media (max-width: 768px) {
+            .slider-track {
+                gap: 1.5rem;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                padding: 0 20px 20px 20px;
+                scrollbar-width: none;
+            }
+            .slider-track::-webkit-scrollbar { display: none; }
+            .slider-item {
+                min-width: calc(100vw - 80px);
+                max-width: calc(100vw - 80px);
+                scroll-snap-align: center;
+            }
+        }
+
+        /* Chat Widget */
         .chat-widget { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
         .chat-button { 
             width: 60px; height: 60px; border-radius: 50%; 
@@ -39,18 +72,11 @@
         @keyframes pulse { 0%, 100% { box-shadow: 0 8px 24px rgba(236, 72, 153, 0.4); } 50% { box-shadow: 0 8px 32px rgba(236, 72, 153, 0.6); } }
 
         .chat-window { 
-            position: absolute; 
-            bottom: 76px; right: 0; 
-            width: 380px; 
-            max-width: calc(100vw - 40px);
-            height: 560px; 
-            background: white; 
-            border-radius: 24px; 
-            box-shadow: 0 20px 60px rgba(0,0,0,0.18); 
-            display: none; 
-            flex-direction: column; 
-            overflow: hidden; 
-            transition: all 0.3s ease;
+            position: absolute; bottom: 76px; right: 0; 
+            width: 380px; max-width: calc(100vw - 40px);
+            height: 560px; background: white; border-radius: 24px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.18); display: none; 
+            flex-direction: column; overflow: hidden; transition: all 0.3s ease;
         }
         .chat-window.active { display: flex; }
 
@@ -66,37 +92,7 @@
         .notification-badge { position: absolute; top: -6px; right: -6px; width: 26px; height: 26px; background: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: white; animation: bounce 1s infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
-        /* RESPONSIVE CHAT */
-        @media (max-width: 768px) {
-            .chat-widget { bottom: 16px; right: 16px; }
-            .chat-button { width: 56px; height: 56px; }
-            .chat-window { 
-                width: calc(100vw - 32px); 
-                height: 70vh; 
-                max-height: 620px;
-                bottom: 72px;
-                border-radius: 20px;
-            }
-            .chat-header { padding: 16px; border-radius: 20px 20px 0 0; }
-            .chat-messages { padding: 16px; }
-            .message-bubble { font-size: 14px; padding: 10px 14px; }
-            .chat-input-container { padding: 12px; }
-            .chat-input { padding: 12px 16px; font-size: 14.5px; }
-        }
-
-        @media (max-width: 480px) {
-            .chat-window { 
-                width: calc(100vw - 24px); 
-                height: 75vh; 
-                bottom: 68px;
-                border-radius: 18px;
-            }
-            .chat-header { padding: 14px; }
-            .chat-messages { padding: 12px; }
-            .message-bubble { font-size: 13.5px; }
-        }
-
-        /* Hamburger */
+        /* Hamburger & Mobile Menu */
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
         .hamburger span { width: 28px; height: 3px; background: #1e293b; border-radius: 3px; transition: all 0.3s ease; }
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
@@ -104,13 +100,10 @@
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
         .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 40; }
         .mobile-menu.active { display: flex; }
-        .mobile-menu a { font-size: 28px; font-weight: 700; margin: 20px 0; color: #1e293b; transition: color 0.3s; }
-        .mobile-menu a:hover { color: #ec4899; }
 
         @media (max-width: 768px) {
             .hamburger { display: flex; }
             .desktop-menu { display: none; }
-            .nav-right { gap: 12px; }
         }
 
         .service-icon { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fce7f3, #fef3c7); border-radius: 20px; font-size: 28px; margin-bottom: 20px; transition: all 0.3s ease; }
@@ -122,21 +115,17 @@
         .portfolio-modal.active { display: flex; }
         .portfolio-modal-content { background: white; border-radius: 24px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; animation: modalSlide 0.3s ease; }
         @keyframes modalSlide { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 8px; transition: all 0.3s; }
-        .lang-btn:hover { background: rgba(236, 72, 153, 0.1); }
-        .lang-btn.active { background: linear-gradient(135deg, #ec4899, #f43f5e); color: white; }
-
-        /* Form Modal Styles */
         .form-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
         .form-modal.active { display: flex; }
         .form-modal-content { background: white; border-radius: 24px; max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto; animation: modalSlide 0.3s ease; padding: 40px; }
         .form-input { width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 12px; outline: none; transition: border-color 0.3s; margin-bottom: 20px; }
         .form-input:focus { border-color: #ec4899; }
         .form-textarea { height: 120px; resize: vertical; }
+        .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 8px; transition: all 0.3s; }
+        .lang-btn:hover { background: rgba(236, 72, 153, 0.1); }
+        .lang-btn.active { background: linear-gradient(135deg, #ec4899, #f43f5e); color: white; }
     </style>
-    <!-- Favicon S Pink -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='512' height='512' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='512' height='512' rx='100' ry='100' fill='%23ec4899'/%3E%3Ctext x='256' y='356' font-family='Arial, sans-serif' font-size='360' font-weight='bold' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg width='512' height='512' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='512' height='512' rx='100' ry='100' fill='%23ec4899'/%3E%3Ctext x='256' y='356' font-family='Arial, sans-serif' font-size='360' font-weight='bold' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='512' height='512' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='512' height='512' rx='100' ry='100' fill='%23ec4899'/%3E%3Ctext x='256' y='356' font-family='Arial, sans-serif' font-size='360' font-weight='bold' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 </head>
 <body class="bg-stone-50 text-slate-800">
 
@@ -161,9 +150,7 @@
                 </a>
                 
                 <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </div>
             </div>
         </div>
@@ -221,6 +208,7 @@
         </div>
     </section>
 
+    <!-- SERVICES SLIDER -->
     <section id="services" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
@@ -231,62 +219,68 @@
                     <span data-en="Crafted for" data-id="Dibuat Khusus untuk">Crafted for</span> <span class="gradient-text" data-en="Special Moments" data-id="Momen Spesial">Special Moments</span>
                 </h2>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card-hover p-10 rounded-3xl bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-pink-100 relative overflow-hidden">
-                    <div class="service-icon"><i class="fas fa-heart text-pink-500"></i></div>
-                    <h3 class="text-2xl font-bold mb-3" data-en="For Couples" data-id="Untuk Couple">For Couples</h3>
-                    <p class="text-slate-600 leading-relaxed" data-en="Interactive love journey, romantic photo gallery with smooth animations, automatic anniversary countdown, and your favorite background music." data-id="Love journey interaktif, gallery foto romantis dengan animasi smooth, countdown anniversary otomatis, dan musik background favorit kalian.">Interactive love journey, romantic photo gallery with smooth animations, automatic anniversary countdown, and your favorite background music.</p>
-                    <button onclick="toggleDetail('couple')" class="mt-6 flex items-center text-pink-600 font-semibold text-sm">
-                        <span data-en="See Details" data-id="Lihat Detail">See Details</span>
-                        <i class="fas fa-chevron-down ml-2 transition-transform" id="icon-couple"></i>
-                    </button>
-                    <div id="detail-couple" class="detail-content border-t border-pink-200 mt-4">
-                        <ul class="text-sm text-slate-600 space-y-2">
-                            <li><i class="fas fa-check text-pink-500 mr-2"></i><span data-en="Timeline of your relationship" data-id="Timeline perjalanan hubungan">Timeline of your relationship</span></li>
-                            <li><i class="fas fa-check text-pink-500 mr-2"></i><span data-en="Interactive photo slider" data-id="Slider foto interaktif">Interactive photo slider</span></li>
-                            <li><i class="fas fa-check text-pink-500 mr-2"></i><span data-en="Love letter section" data-id="Bagian surat cinta">Love letter section</span></li>
-                            <li><i class="fas fa-check text-pink-500 mr-2"></i><span data-en="Real-time countdown" data-id="Countdown real-time">Real-time countdown</span></li>
-                        </ul>
+
+            <div class="slider-container">
+                <div class="slider-track">
+                    <div class="slider-item card-hover p-10 rounded-3xl bg-gradient-to-br from-pink-50 to-rose-50 relative overflow-hidden shadow-lg">
+                        <div class="service-icon"><i class="fas fa-heart text-pink-500"></i></div>
+                        <h3 class="text-2xl font-bold mb-3" data-en="For Couples" data-id="Untuk Couple">For Couples</h3>
+                        <p class="text-slate-600 leading-relaxed" data-en="Interactive love journey, romantic photo gallery with smooth animations, automatic anniversary countdown, and your favorite background music." data-id="Love journey interaktif, gallery foto romantis dengan animasi smooth, countdown anniversary otomatis, dan musik background favorit kalian.">Interactive love journey, romantic photo gallery with smooth animations, automatic anniversary countdown, and your favorite background music.</p>
+                        <button onclick="toggleDetail('couple')" class="mt-6 flex items-center text-pink-600 font-semibold text-sm">
+                            <span data-en="See Details" data-id="Lihat Detail">See Details</span>
+                            <i class="fas fa-chevron-down ml-2 transition-transform" id="icon-couple"></i>
+                        </button>
+                        <div id="detail-couple" class="detail-content border-t border-pink-200 mt-4">
+                            <ul class="text-sm text-slate-600 space-y-2">
+                                <li><i class="fas fa-check text-pink-500 mr-2"></i><span data-en="Timeline of your relationship" data-id="Timeline perjalanan hubungan">Timeline of your relationship</span></li>
+                                <li><i class="fas fa-check text-pink-500 mr-2"></i><span data-en="Interactive photo slider" data-id="Slider foto interaktif">Interactive photo slider</span></li>
+                                <li><i class="fas fa-check text-pink-500 mr-2"></i><span data-en="Love letter section" data-id="Bagian surat cinta">Love letter section</span></li>
+                                <li><i class="fas fa-check text-pink-500 mr-2"></i><span data-en="Real-time countdown" data-id="Countdown real-time">Real-time countdown</span></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="card-hover p-10 rounded-3xl bg-gradient-to-br from-amber-50 to-yellow-50 border-2 border-amber-100 relative overflow-hidden">
-                    <div class="service-icon"><i class="fas fa-home text-amber-500"></i></div>
-                    <h3 class="text-2xl font-bold mb-3" data-en="For Family" data-id="Untuk Keluarga">For Family</h3>
-                    <p class="text-slate-600 leading-relaxed" data-en="Interactive digital family tree, nostalgic photo archives through the years, and heartfelt holiday greetings." data-id="Silsilah keluarga digital interaktif, arsip foto kenangan dari masa ke masa, ucapan hari raya yang personal dan menyentuh hati.">Interactive digital family tree, nostalgic photo archives through the years, and heartfelt holiday greetings.</p>
-                    <button onclick="toggleDetail('family')" class="mt-6 flex items-center text-amber-600 font-semibold text-sm">
-                        <span data-en="See Details" data-id="Lihat Detail">See Details</span>
-                        <i class="fas fa-chevron-down ml-2 transition-transform" id="icon-family"></i>
-                    </button>
-                    <div id="detail-family" class="detail-content border-t border-amber-200 mt-4">
-                        <ul class="text-sm text-slate-600 space-y-2">
-                            <li><i class="fas fa-check text-amber-500 mr-2"></i><span data-en="Family tree visualization" data-id="Visualisasi pohon keluarga">Family tree visualization</span></li>
-                            <li><i class="fas fa-check text-amber-500 mr-2"></i><span data-en="Decade-by-decade galleries" data-id="Galeri per dekade">Decade-by-decade galleries</span></li>
-                            <li><i class="fas fa-check text-amber-500 mr-2"></i><span data-en="Family stories & memories" data-id="Cerita & kenangan keluarga">Family stories & memories</span></li>
-                            <li><i class="fas fa-check text-amber-500 mr-2"></i><span data-en="Holiday greetings template" data-id="Template ucapan hari raya">Holiday greetings template</span></li>
-                        </ul>
+
+                    <div class="slider-item card-hover p-10 rounded-3xl bg-gradient-to-br from-amber-50 to-yellow-50 relative overflow-hidden shadow-lg">
+                        <div class="service-icon"><i class="fas fa-home text-amber-500"></i></div>
+                        <h3 class="text-2xl font-bold mb-3" data-en="For Family" data-id="Untuk Keluarga">For Family</h3>
+                        <p class="text-slate-600 leading-relaxed" data-en="Interactive digital family tree, nostalgic photo archives through the years, and heartfelt holiday greetings." data-id="Silsilah keluarga digital interaktif, arsip foto kenangan dari masa ke masa, ucapan hari raya yang personal dan menyentuh hati.">Interactive digital family tree, nostalgic photo archives through the years, and heartfelt holiday greetings.</p>
+                        <button onclick="toggleDetail('family')" class="mt-6 flex items-center text-amber-600 font-semibold text-sm">
+                            <span data-en="See Details" data-id="Lihat Detail">See Details</span>
+                            <i class="fas fa-chevron-down ml-2 transition-transform" id="icon-family"></i>
+                        </button>
+                        <div id="detail-family" class="detail-content border-t border-amber-200 mt-4">
+                            <ul class="text-sm text-slate-600 space-y-2">
+                                <li><i class="fas fa-check text-amber-500 mr-2"></i><span data-en="Family tree visualization" data-id="Visualisasi pohon keluarga">Family tree visualization</span></li>
+                                <li><i class="fas fa-check text-amber-500 mr-2"></i><span data-en="Decade-by-decade galleries" data-id="Galeri per dekade">Decade-by-decade galleries</span></li>
+                                <li><i class="fas fa-check text-amber-500 mr-2"></i><span data-en="Family stories & memories" data-id="Cerita & kenangan keluarga">Family stories & memories</span></li>
+                                <li><i class="fas fa-check text-amber-500 mr-2"></i><span data-en="Holiday greetings template" data-id="Template ucapan hari raya">Holiday greetings template</span></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="card-hover p-10 rounded-3xl bg-gradient-to-br from-purple-50 to-indigo-50 border-2 border-purple-100 relative overflow-hidden">
-                    <div class="service-icon"><i class="fas fa-gift text-purple-500"></i></div>
-                    <h3 class="text-2xl font-bold mb-3" data-en="Gift for Friends" data-id="Hadiah Kerabat">Gift for Friends</h3>
-                    <p class="text-slate-600 leading-relaxed" data-en="Graduation wishes, milestone birthdays, career achievements, or other special moments with memorable designs." data-id="Website ucapan wisuda, ulang tahun milestone, pencapaian karir, atau momen spesial lainnya dengan desain yang memorable.">Graduation wishes, milestone birthdays, career achievements, or other special moments with memorable designs.</p>
-                    <button onclick="toggleDetail('gift')" class="mt-6 flex items-center text-purple-600 font-semibold text-sm">
-                        <span data-en="See Details" data-id="Lihat Detail">See Details</span>
-                        <i class="fas fa-chevron-down ml-2 transition-transform" id="icon-gift"></i>
-                    </button>
-                    <div id="detail-gift" class="detail-content border-t border-purple-200 mt-4">
-                        <ul class="text-sm text-slate-600 space-y-2">
-                            <li><i class="fas fa-check text-purple-500 mr-2"></i><span data-en="Custom congratulations page" data-id="Halaman ucapan custom">Custom congratulations page</span></li>
-                            <li><i class="fas fa-check text-purple-500 mr-2"></i><span data-en="Achievement highlights" data-id="Highlight pencapaian">Achievement highlights</span></li>
-                            <li><i class="fas fa-check text-purple-500 mr-2"></i><span data-en="Guest book messages" data-id="Pesan buku tamu">Guest book messages</span></li>
-                            <li><i class="fas fa-check text-purple-500 mr-2"></i><span data-en="Shareable on social media" data-id="Bisa dibagikan ke sosmed">Shareable on social media</span></li>
-                        </ul>
+
+                    <div class="slider-item card-hover p-10 rounded-3xl bg-gradient-to-br from-purple-50 to-indigo-50 relative overflow-hidden shadow-lg">
+                        <div class="service-icon"><i class="fas fa-gift text-purple-500"></i></div>
+                        <h3 class="text-2xl font-bold mb-3" data-en="Gift for Friends" data-id="Hadiah Kerabat">Gift for Friends</h3>
+                        <p class="text-slate-600 leading-relaxed" data-en="Graduation wishes, milestone birthdays, career achievements, or other special moments with memorable designs." data-id="Website ucapan wisuda, ulang tahun milestone, pencapaian karir, atau momen spesial lainnya dengan desain yang memorable.">Graduation wishes, milestone birthdays, career achievements, or other special moments with memorable designs.</p>
+                        <button onclick="toggleDetail('gift')" class="mt-6 flex items-center text-purple-600 font-semibold text-sm">
+                            <span data-en="See Details" data-id="Lihat Detail">See Details</span>
+                            <i class="fas fa-chevron-down ml-2 transition-transform" id="icon-gift"></i>
+                        </button>
+                        <div id="detail-gift" class="detail-content border-t border-purple-200 mt-4">
+                            <ul class="text-sm text-slate-600 space-y-2">
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i><span data-en="Custom congratulations page" data-id="Halaman ucapan custom">Custom congratulations page</span></li>
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i><span data-en="Achievement highlights" data-id="Highlight pencapaian">Achievement highlights</span></li>
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i><span data-en="Guest book messages" data-id="Pesan buku tamu">Guest book messages</span></li>
+                                <li><i class="fas fa-check text-purple-500 mr-2"></i><span data-en="Shareable on social media" data-id="Bisa dibagikan ke sosmed">Shareable on social media</span></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- PORTFOLIO SLIDER -->
     <section id="portfolio" class="py-24 bg-stone-50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
@@ -297,37 +291,42 @@
                     <span data-en="Portfolio of" data-id="Portofolio">Portfolio of</span> <span class="gradient-text" data-en="Love & Memories" data-id="Cinta & Kenangan">Love & Memories</span>
                 </h2>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card-hover bg-white rounded-3xl overflow-hidden border-2 border-stone-200 cursor-pointer" onclick="openPortfolio('romantic')">
-                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2" data-en="Romantic Anniversary" data-id="Anniversary Romantis">Romantic Anniversary</h3>
-                        <p class="text-sm text-slate-600 mb-4" data-en="Elegant design with smooth animations" data-id="Desain elegan dengan animasi smooth">Elegant design with smooth animations</p>
-                        <div class="flex gap-2">
-                            <span class="text-xs bg-pink-100 text-pink-600 px-3 py-1 rounded-full">Couple</span>
-                            <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">Premium</span>
+
+            <div class="slider-container">
+                <div class="slider-track">
+                    <div class="slider-item card-hover bg-white rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="openPortfolio('romantic')">
+                        <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2" data-en="Romantic Anniversary" data-id="Anniversary Romantis">Romantic Anniversary</h3>
+                            <p class="text-sm text-slate-600 mb-4" data-en="Elegant design with smooth animations" data-id="Desain elegan dengan animasi smooth">Elegant design with smooth animations</p>
+                            <div class="flex gap-2">
+                                <span class="text-xs bg-pink-100 text-pink-600 px-3 py-1 rounded-full">Couple</span>
+                                <span class="text-xs bg-purple-100 text-purple-600 px-3 py-1 rounded-full">Premium</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-hover bg-white rounded-3xl overflow-hidden border-2 border-stone-200 cursor-pointer" onclick="openPortfolio('family')">
-                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1601118964938-228a89955311?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmFtaWx5JTIwcmV1bmlvbnxlbnwwfHwwfHx8MA%3D%3D')"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2" data-en="Family Reunion" data-id="Reuni Keluarga">Family Reunion</h3>
-                        <p class="text-sm text-slate-600 mb-4" data-en="Photo archives and family tree" data-id="Arsip foto dan pohon keluarga">Photo archives and family tree</p>
-                        <div class="flex gap-2">
-                            <span class="text-xs bg-amber-100 text-amber-600 px-3 py-1 rounded-full">Family</span>
-                            <span class="text-xs bg-green-100 text-green-600 px-3 py-1 rounded-full">Interactive</span>
+
+                    <div class="slider-item card-hover bg-white rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="openPortfolio('family')">
+                        <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1601118964938-228a89955311?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmFtaWx5JTIwcmV1bmlvbnxlbnwwfHwwfHx8MA%3D%3D')"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2" data-en="Family Reunion" data-id="Reuni Keluarga">Family Reunion</h3>
+                            <p class="text-sm text-slate-600 mb-4" data-en="Photo archives and family tree" data-id="Arsip foto dan pohon keluarga">Photo archives and family tree</p>
+                            <div class="flex gap-2">
+                                <span class="text-xs bg-amber-100 text-amber-600 px-3 py-1 rounded-full">Family</span>
+                                <span class="text-xs bg-green-100 text-green-600 px-3 py-1 rounded-full">Interactive</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-hover bg-white rounded-3xl overflow-hidden border-2 border-stone-200 cursor-pointer" onclick="openPortfolio('graduation')">
-                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1725888328477-5db4013d6aaf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JhZHVhdGlvbiUyMGdpZnR8ZW58MHx8MHx8fDA%3D')"></div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2" data-en="Graduation Gift" data-id="Hadiah Wisuda">Graduation Gift</h3>
-                        <p class="text-sm text-slate-600 mb-4" data-en="Congratulations with guest messages" data-id="Ucapan dengan pesan tamu">Congratulations with guest messages</p>
-                        <div class="flex gap-2">
-                            <span class="text-xs bg-blue-100 text-blue-600 px-3 py-1 rounded-full">Gift</span>
-                            <span class="text-xs bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full">Modern</span>
+
+                    <div class="slider-item card-hover bg-white rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="openPortfolio('graduation')">
+                        <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1725888328477-5db4013d6aaf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JhZHVhdGlvbiUyMGdpZnR8ZW58MHx8MHx8fDA%3D')"></div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2" data-en="Graduation Gift" data-id="Hadiah Wisuda">Graduation Gift</h3>
+                            <p class="text-sm text-slate-600 mb-4" data-en="Congratulations with guest messages" data-id="Ucapan dengan pesan tamu">Congratulations with guest messages</p>
+                            <div class="flex gap-2">
+                                <span class="text-xs bg-blue-100 text-blue-600 px-3 py-1 rounded-full">Gift</span>
+                                <span class="text-xs bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full">Modern</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -335,42 +334,7 @@
         </div>
     </section>
 
-    <div id="portfolioModal" class="portfolio-modal" onclick="closePortfolio(event)">
-        <div class="portfolio-modal-content" onclick="event.stopPropagation()">
-            <div class="p-8">
-                <div class="flex justify-between items-start mb-6">
-                    <div>
-                        <h2 id="modalTitle" class="text-3xl font-serif font-bold mb-2">Portfolio Title</h2>
-                        <p id="modalCategory" class="text-pink-600 font-semibold">Category</p>
-                    </div>
-                    <button onclick="closePortfolio()" class="text-slate-400 hover:text-slate-600 text-2xl">&times;</button>
-                </div>
-                <div class="mb-6">
-                    <div id="modalImage" class="h-96 bg-cover bg-center rounded-2xl mb-6"></div>
-                    <div id="modalDescription" class="text-slate-600 mb-6"></div>
-                    <div class="grid md:grid-cols-2 gap-4 mb-6">
-                        <div class="bg-stone-50 p-4 rounded-xl">
-                            <h4 class="font-bold mb-2" data-en="Features" data-id="Fitur">Features</h4>
-                            <ul id="modalFeatures" class="text-sm text-slate-600 space-y-1"></ul>
-                        </div>
-                        <div class="bg-stone-50 p-4 rounded-xl">
-                            <h4 class="font-bold mb-2" data-en="Technologies" data-id="Teknologi">Technologies</h4>
-                            <ul id="modalTech" class="text-sm text-slate-600 space-y-1"></ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex gap-4">
-                    <a id="modalLiveLink" href="#" target="_blank" class="flex-1 bg-slate-900 text-white text-center py-4 rounded-xl font-bold hover:bg-slate-800 transition">
-                        <i class="fas fa-external-link-alt mr-2"></i><span data-en="View Live Demo" data-id="Lihat Demo Live">View Live Demo</span>
-                    </a>
-                    <button onclick="chooseConcept()" class="flex-1 bg-gradient-to-r from-pink-500 to-rose-500 text-white py-4 rounded-xl font-bold hover:shadow-xl transition shine">
-                        <i class="fas fa-check-circle mr-2"></i><span data-en="Choose This Concept!" data-id="Pilih Konsep Ini!">Choose This Concept!</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <!-- PRICING SLIDER -->
     <section id="pricing" class="py-24 px-6 bg-white relative overflow-hidden">
         <div class="absolute top-0 left-0 w-96 h-96 bg-pink-200 rounded-full blur-3xl opacity-20"></div>
         <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-200 rounded-full blur-3xl opacity-20"></div>
@@ -382,68 +346,73 @@
                 <span data-en="Affordable Investment," data-id="Investasi Terjangkau,">Affordable Investment,</span> <span class="gradient-text" data-en="Priceless Memories" data-id="Kenangan Tak Ternilai">Priceless Memories</span>
             </h2>
         </div>
-        <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto relative z-10">
-            <div class="card-hover bg-white p-10 rounded-3xl border-2 border-stone-200 flex flex-col justify-between relative">
-                <div>
-                    <div class="flex items-center justify-between mb-6">
-                        <h4 class="font-bold text-slate-500 uppercase text-xs tracking-widest" data-en="Starter" data-id="Starter">Starter</h4>
-                        <i class="fas fa-leaf text-2xl text-green-500"></i>
+
+        <div class="slider-container">
+            <div class="slider-track">
+                <div class="slider-item card-hover bg-white p-10 rounded-3xl flex flex-col justify-between relative shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="font-bold text-slate-500 uppercase text-xs tracking-widest" data-en="Starter" data-id="Starter">Starter</h4>
+                            <i class="fas fa-leaf text-2xl text-green-500"></i>
+                        </div>
+                        <div class="mb-8"><span class="text-5xl font-bold">Rp49.000</span></div>
+                        <ul class="space-y-4 text-sm text-slate-600 mb-10">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-en="1 Static Page" data-id="1 Halaman Statis">1 Static Page</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-en="Max 15 Photos" data-id="Maksimal 15 Foto">Max 15 Photos</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-en="Text & Music" data-id="Ucapan Teks & Musik">Text & Music</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-en="2 Revisions" data-id="2 Revisi">2 Revisions</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-en="3 Days Delivery" data-id="Pengerjaan 3 Hari">3 Days Delivery</span></li>
+                        </ul>
                     </div>
-                    <div class="mb-8"><span class="text-5xl font-bold">49.000</span></div>
-                    <ul class="space-y-4 text-sm text-slate-600 mb-10">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-en="1 Static Page" data-id="1 Halaman Statis">1 Static Page</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-en="Max 15 Photos" data-id="Maksimal 15 Foto">Max 15 Photos</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-en="Text & Music" data-id="Ucapan Teks & Musik">Text & Music</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-en="2 Revisions" data-id="2 Revisi">2 Revisions</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-en="3 Days Delivery" data-id="Pengerjaan 3 Hari">3 Days Delivery</span></li>
-                    </ul>
+                    <button onclick="openForm('Starter')" class="w-full py-4 rounded-xl border-2 border-pink-600 text-pink-600 font-bold hover:bg-pink-50 transition duration-300 shine">
+                        <i class="fas fa-shopping-cart mr-2"></i><span data-en="Choose Plan" data-id="Pilih Paket">Choose Plan</span>
+                    </button>
                 </div>
-                <button onclick="openForm('Starter')" class="w-full py-4 rounded-xl border-2 border-pink-600 text-pink-600 font-bold hover:bg-pink-50 transition duration-300 shine">
-                    <i class="fas fa-shopping-cart mr-2"></i><span data-en="Choose Plan" data-id="Pilih Paket">Choose Plan</span>
-                </button>
-            </div>
-            <div class="card-hover bg-gradient-to-br from-slate-900 to-slate-800 p-10 rounded-3xl text-white transform md:-translate-y-6 shadow-2xl flex flex-col justify-between relative border-2 border-pink-500">
-                <div class="pricing-badge"><i class="fas fa-star mr-1"></i><span data-en="MOST POPULAR" data-id="TERPOPULER">MOST POPULAR</span></div>
-                <div>
-                    <div class="flex items-center justify-between mb-6">
-                        <h4 class="font-bold text-slate-400 uppercase text-xs tracking-widest" data-en="Premium" data-id="Premium">Premium</h4>
-                        <i class="fas fa-heart text-2xl text-pink-400"></i>
+
+                <div class="slider-item card-hover bg-gradient-to-br from-slate-900 to-slate-800 p-10 rounded-3xl text-white transform md:-translate-y-6 shadow-2xl flex flex-col justify-between relative">
+                    <div class="pricing-badge"><i class="fas fa-star mr-1"></i><span data-en="MOST POPULAR" data-id="TERPOPULER">MOST POPULAR</span></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="font-bold text-slate-400 uppercase text-xs tracking-widest" data-en="Premium" data-id="Premium">Premium</h4>
+                            <i class="fas fa-heart text-2xl text-pink-400"></i>
+                        </div>
+                        <div class="mb-8"><span class="text-5xl font-bold">Rp99.000</span></div>
+                        <ul class="space-y-4 text-sm text-slate-300 mb-10">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="Multi-Page Website" data-id="Website Multi-Halaman">Multi-Page Website</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="Unlimited Photos" data-id="Foto Tanpa Batas">Unlimited Photos</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="Music & Video" data-id="Musik & Video">Music & Video</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="Interactive Timeline" data-id="Timeline Interaktif">Interactive Timeline</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="Custom Illustrations" data-id="Ilustrasi Custom">Custom Illustrations</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="3 Revisions" data-id="3 Revisi">3 Revisions</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="5 Days Delivery" data-id="Pengerjaan 5 Hari">5 Days Delivery</span></li>
+                        </ul>
                     </div>
-                    <div class="mb-8"><span class="text-5xl font-bold">Rp99.000</span></div>
-                    <ul class="space-y-4 text-sm text-slate-300 mb-10">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="Multi-Page Website" data-id="Website Multi-Halaman">Multi-Page Website</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="Unlimited Photos" data-id="Foto Tanpa Batas">Unlimited Photos</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="Music & Video" data-id="Musik & Video">Music & Video</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="Interactive Timeline" data-id="Timeline Interaktif">Interactive Timeline</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="Custom Illustrations" data-id="Ilustrasi Custom">Custom Illustrations</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="3 Revisions" data-id="3 Revisi">3 Revisions</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-pink-400 mr-3"></i><span data-en="5 Days Delivery" data-id="Pengerjaan 5 Hari">5 Days Delivery</span></li>
-                    </ul>
+                    <button onclick="openForm('Premium')" class="w-full py-4 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold hover:shadow-xl transition duration-300 shine">
+                        <i class="fas fa-bolt mr-2"></i><span data-en="Choose Plan" data-id="Pilih Paket">Choose Plan</span>
+                    </button>
                 </div>
-                <button onclick="openForm('Premium')" class="w-full py-4 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold hover:shadow-xl transition duration-300 shine">
-                    <i class="fas fa-bolt mr-2"></i><span data-en="Choose Plan" data-id="Pilih Paket">Choose Plan</span>
-                </button>
-            </div>
-            <div class="card-hover bg-white p-10 rounded-3xl border-2 border-stone-200 flex flex-col justify-between relative">
-                <div>
-                    <div class="flex items-center justify-between mb-6">
-                        <h4 class="font-bold text-slate-500 uppercase text-xs tracking-widest" data-en="Elite" data-id="Elite">Elite</h4>
-                        <i class="fas fa-crown text-2xl text-amber-500"></i>
+
+                <div class="slider-item card-hover bg-white p-10 rounded-3xl flex flex-col justify-between relative shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="font-bold text-slate-500 uppercase text-xs tracking-widest" data-en="Elite" data-id="Elite">Elite</h4>
+                            <i class="fas fa-crown text-2xl text-amber-500"></i>
+                        </div>
+                        <div class="mb-8"><span class="text-5xl font-bold">Rp200.000</span></div>
+                        <ul class="space-y-4 text-sm text-slate-600 mb-10">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="All Premium Features" data-id="Semua Fitur Premium">All Premium Features</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="Password Protection" data-id="Proteksi Kata Sandi">Password Protection</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="Digital Gift Integration" data-id="Integrasi Hadiah Digital">Digital Gift Integration</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="Priority Delivery" data-id="Prioritas Pengerjaan">Priority Delivery</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="Unlimited Revisions" data-id="Revisi Tanpa Batas">Unlimited Revisions</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="Custom Domain (.com/.id)" data-id="Domain Custom (.com/.id)">Custom Domain (.com/.id)</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="1 Year Hosting" data-id="Hosting 1 Tahun">1 Year Hosting</span></li>
+                        </ul>
                     </div>
-                    <div class="mb-8"><span class="text-5xl font-bold">Rp200.000</span></div>
-                    <ul class="space-y-4 text-sm text-slate-600 mb-10">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="All Premium Features" data-id="Semua Fitur Premium">All Premium Features</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="Password Protection" data-id="Proteksi Kata Sandi">Password Protection</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="Digital Gift Integration" data-id="Integrasi Hadiah Digital">Digital Gift Integration</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="Priority Delivery" data-id="Prioritas Pengerjaan">Priority Delivery</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="Unlimited Revisions" data-id="Revisi Tanpa Batas">Unlimited Revisions</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="Custom Domain (.com/.id)" data-id="Domain Custom (.com/.id)">Custom Domain (.com/.id)</span></li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-3"></i><span data-en="1 Year Hosting" data-id="Hosting 1 Tahun">1 Year Hosting</span></li>
-                    </ul>
+                    <button onclick="openForm('Elite')" class="w-full py-4 rounded-xl border-2 border-amber-600 text-amber-600 font-bold hover:bg-amber-50 transition duration-300 shine">
+                        <i class="fas fa-gem mr-2"></i><span data-en="Choose Plan" data-id="Pilih Paket">Choose Plan</span>
+                    </button>
                 </div>
-                <button onclick="openForm('Elite')" class="w-full py-4 rounded-xl border-2 border-amber-600 text-amber-600 font-bold hover:bg-amber-50 transition duration-300 shine">
-                    <i class="fas fa-gem mr-2"></i><span data-en="Choose Plan" data-id="Pilih Paket">Choose Plan</span>
-                </button>
             </div>
         </div>
     </section>
@@ -456,7 +425,7 @@
                 <a href="https://wa.me/6285708989602" class="bg-white text-pink-600 px-10 py-5 rounded-2xl font-bold hover:bg-stone-100 transition duration-300 shadow-xl shine text-base">
                     <i class="fab fa-whatsapp mr-2"></i><span data-en="Chat via WhatsApp" data-id="Chat via WhatsApp">Chat via WhatsApp</span>
                 </a>
-                <a href="mailto:webinaja.contact@gmail.com" class="bg-transparent border-2 border-white text-white px-10 py-5 rounded-2xl font-bold hover:bg-white/10 transition duration-300 text-base">
+                <a href="mailto:hello@senada.id" class="bg-transparent border-2 border-white text-white px-10 py-5 rounded-2xl font-bold hover:bg-white/10 transition duration-300 text-base">
                     <i class="fas fa-envelope mr-2"></i><span data-en="Email Us" data-id="Email Kami">Email Us</span>
                 </a>
             </div>
@@ -501,6 +470,7 @@
         </div>
     </footer>
 
+    <!-- Chat Widget -->
     <div class="chat-widget">
         <div class="chat-window" id="chatWindow">
             <div class="chat-header">
@@ -531,12 +501,49 @@
             </div>
         </div>
         <div class="chat-button relative" onclick="toggleChat()" id="chatButton">
-            <span class="notification-badge" id="notificationBadge">1</span>
+            <span class="notification-badge" id="notificationBadge" style="display:flex;">1</span>
             <i class="fas fa-comments text-white text-2xl"></i>
         </div>
     </div>
 
-    <!-- Form Modal for Choose Plan -->
+    <!-- Portfolio Modal -->
+    <div id="portfolioModal" class="portfolio-modal" onclick="closePortfolio(event)">
+        <div class="portfolio-modal-content" onclick="event.stopPropagation()">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 id="modalTitle" class="text-3xl font-serif font-bold mb-2">Portfolio Title</h2>
+                        <p id="modalCategory" class="text-pink-600 font-semibold">Category</p>
+                    </div>
+                    <button onclick="closePortfolio()" class="text-slate-400 hover:text-slate-600 text-2xl">×</button>
+                </div>
+                <div class="mb-6">
+                    <div id="modalImage" class="h-96 bg-cover bg-center rounded-2xl mb-6"></div>
+                    <div id="modalDescription" class="text-slate-600 mb-6"></div>
+                    <div class="grid md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-stone-50 p-4 rounded-xl">
+                            <h4 class="font-bold mb-2" data-en="Features" data-id="Fitur">Features</h4>
+                            <ul id="modalFeatures" class="text-sm text-slate-600 space-y-1"></ul>
+                        </div>
+                        <div class="bg-stone-50 p-4 rounded-xl">
+                            <h4 class="font-bold mb-2" data-en="Technologies" data-id="Teknologi">Technologies</h4>
+                            <ul id="modalTech" class="text-sm text-slate-600 space-y-1"></ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <a id="modalLiveLink" href="#" target="_blank" class="flex-1 bg-slate-900 text-white text-center py-4 rounded-xl font-bold hover:bg-slate-800 transition">
+                        <i class="fas fa-external-link-alt mr-2"></i><span data-en="View Live Demo" data-id="Lihat Demo Live">View Live Demo</span>
+                    </a>
+                    <button onclick="chooseConcept()" class="flex-1 bg-gradient-to-r from-pink-500 to-rose-500 text-white py-4 rounded-xl font-bold hover:shadow-xl transition shine">
+                        <i class="fas fa-check-circle mr-2"></i><span data-en="Choose This Concept!" data-id="Pilih Konsep Ini!">Choose This Concept!</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Modal -->
     <div id="formModal" class="form-modal" onclick="closeForm(event)">
         <div class="form-modal-content" onclick="event.stopPropagation()">
             <div class="flex justify-between items-start mb-6">
@@ -544,7 +551,7 @@
                     <h2 class="text-3xl font-serif font-bold mb-2" data-en="Tell Us About Your Project" data-id="Ceritakan Proyek Anda">Tell Us About Your Project</h2>
                     <p class="text-pink-600 font-semibold" id="formPlan"></p>
                 </div>
-                <button onclick="closeForm()" class="text-slate-400 hover:text-slate-600 text-2xl">&times;</button>
+                <button onclick="closeForm()" class="text-slate-400 hover:text-slate-600 text-2xl">×</button>
             </div>
             <form id="planForm" onsubmit="submitPlan(event)">
                 <input type="hidden" id="planName">
@@ -748,7 +755,6 @@
             if (!chatOpen) document.getElementById('notificationBadge').style.display = 'flex';
         }, 5000);
 
-        // Form Modal
         let selectedPlan = '';
         function openForm(plan) {
             selectedPlan = plan;
