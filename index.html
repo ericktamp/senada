@@ -25,21 +25,24 @@
         .shine::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.7s; }
         .shine:hover::before { left: 100%; }
 
-        /* Slider Styles */
-        .slider-container { overflow: hidden; width: 100%; }
+        /* Slider Styles - FIXED FOR PRICING */
+        .slider-container { 
+            overflow: hidden; 
+            width: 100%; 
+        }
         .slider-track {
             display: flex;
             gap: 2rem;
             transition: transform 0.5s ease;
-            padding: 0 1rem;
+            justify-content: center; /* biar center di desktop */
         }
         .slider-item {
-            min-width: 380px;
-            max-width: 380px;
-            flex-shrink: 0;
+            flex: 1 1 350px;
+            min-width: 350px;
+            max-width: 420px;
         }
-        @media (max-width: 1024px) {
-            .slider-item { min-width: 340px; max-width: 340px; }
+        @media (max-width: 1280px) {
+            .slider-item { min-width: 320px; max-width: 380px; }
         }
         @media (max-width: 768px) {
             .slider-track {
@@ -49,9 +52,11 @@
                 -webkit-overflow-scrolling: touch;
                 padding: 0 20px 20px 20px;
                 scrollbar-width: none;
+                justify-content: start;
             }
             .slider-track::-webkit-scrollbar { display: none; }
             .slider-item {
+                flex: none;
                 min-width: calc(100vw - 80px);
                 max-width: calc(100vw - 80px);
                 scroll-snap-align: center;
@@ -92,7 +97,6 @@
         .notification-badge { position: absolute; top: -6px; right: -6px; width: 26px; height: 26px; background: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: white; animation: bounce 1s infinite; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
-        /* Hamburger & Mobile Menu */
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
         .hamburger span { width: 28px; height: 3px; background: #1e293b; border-radius: 3px; transition: all 0.3s ease; }
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
@@ -109,8 +113,8 @@
         .service-icon { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #fce7f3, #fef3c7); border-radius: 20px; font-size: 28px; margin-bottom: 20px; transition: all 0.3s ease; }
         .card-hover:hover .service-icon { transform: rotate(10deg) scale(1.1); background: linear-gradient(135deg, #ec4899, #f59e0b); }
         .pricing-badge { position: absolute; top: -12px; right: 20px; background: linear-gradient(135deg, #ec4899, #f43f5e); color: white; padding: 6px 16px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3); }
-        .detail-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease, padding 0.5s ease; padding: 0 20px; }
-        .detail-content.active { max-height: 500px; padding: 20px; }
+        .detail-content { max-height: 0; overflow: hidden; transition: max-height 0.6s ease, padding 0.6s ease; padding: 0 20px; }
+        .detail-content.active { max-height: 600px; padding: 20px; }
         .portfolio-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
         .portfolio-modal.active { display: flex; }
         .portfolio-modal-content { background: white; border-radius: 24px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; animation: modalSlide 0.3s ease; }
@@ -150,7 +154,9 @@
                 </a>
                 
                 <div class="hamburger" id="hamburger">
-                    <span></span><span></span><span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
         </div>
@@ -208,7 +214,6 @@
         </div>
     </section>
 
-    <!-- SERVICES SLIDER -->
     <section id="services" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
@@ -280,7 +285,6 @@
         </div>
     </section>
 
-    <!-- PORTFOLIO SLIDER -->
     <section id="portfolio" class="py-24 bg-stone-50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
@@ -334,7 +338,6 @@
         </div>
     </section>
 
-    <!-- PRICING SLIDER -->
     <section id="pricing" class="py-24 px-6 bg-white relative overflow-hidden">
         <div class="absolute top-0 left-0 w-96 h-96 bg-pink-200 rounded-full blur-3xl opacity-20"></div>
         <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-200 rounded-full blur-3xl opacity-20"></div>
@@ -347,7 +350,7 @@
             </h2>
         </div>
 
-        <div class="slider-container">
+        <div class="slider-container max-w-7xl mx-auto">
             <div class="slider-track">
                 <div class="slider-item card-hover bg-white p-10 rounded-3xl flex flex-col justify-between relative shadow-lg">
                     <div>
@@ -369,11 +372,11 @@
                     </button>
                 </div>
 
-                <div class="slider-item card-hover bg-gradient-to-br from-slate-900 to-slate-800 p-10 rounded-3xl text-white transform md:-translate-y-6 shadow-2xl flex flex-col justify-between relative">
-                    <div class="pricing-badge"><i class="fas fa-star mr-1"></i><span data-en="MOST POPULAR" data-id="TERPOPULER">MOST POPULAR</span></div>
+                <div class="slider-item card-hover bg-gradient-to-br from-slate-900 to-slate-800 p-10 rounded-3xl text-white shadow-2xl flex flex-col justify-between relative z-10">
+                    <div class="pricing-badge"></div>
                     <div>
                         <div class="flex items-center justify-between mb-6">
-                            <h4 class="font-bold text-slate-400 uppercase text-xs tracking-widest" data-en="Premium" data-id="Premium">Premium</h4>
+                            <h4 class="font-bold text-slate-400 uppercase text-xs tracking-widest" data-en="Premium | Best Seller" data-id="Premium | Pilihan Terbaik">Premium | Best Seller</h4>
                             <i class="fas fa-heart text-2xl text-pink-400"></i>
                         </div>
                         <div class="mb-8"><span class="text-5xl font-bold">Rp99.000</span></div>
@@ -470,7 +473,6 @@
         </div>
     </footer>
 
-    <!-- Chat Widget -->
     <div class="chat-widget">
         <div class="chat-window" id="chatWindow">
             <div class="chat-header">
@@ -501,12 +503,11 @@
             </div>
         </div>
         <div class="chat-button relative" onclick="toggleChat()" id="chatButton">
-            <span class="notification-badge" id="notificationBadge" style="display:flex;">1</span>
+            <span class="notification-badge" id="notificationBadge">1</span>
             <i class="fas fa-comments text-white text-2xl"></i>
         </div>
     </div>
 
-    <!-- Portfolio Modal -->
     <div id="portfolioModal" class="portfolio-modal" onclick="closePortfolio(event)">
         <div class="portfolio-modal-content" onclick="event.stopPropagation()">
             <div class="p-8">
@@ -515,7 +516,7 @@
                         <h2 id="modalTitle" class="text-3xl font-serif font-bold mb-2">Portfolio Title</h2>
                         <p id="modalCategory" class="text-pink-600 font-semibold">Category</p>
                     </div>
-                    <button onclick="closePortfolio()" class="text-slate-400 hover:text-slate-600 text-2xl">×</button>
+                    <button onclick="closePortfolio()" class="text-slate-400 hover:text-slate-600 text-2xl">&times;</button>
                 </div>
                 <div class="mb-6">
                     <div id="modalImage" class="h-96 bg-cover bg-center rounded-2xl mb-6"></div>
@@ -543,7 +544,6 @@
         </div>
     </div>
 
-    <!-- Form Modal -->
     <div id="formModal" class="form-modal" onclick="closeForm(event)">
         <div class="form-modal-content" onclick="event.stopPropagation()">
             <div class="flex justify-between items-start mb-6">
@@ -551,7 +551,7 @@
                     <h2 class="text-3xl font-serif font-bold mb-2" data-en="Tell Us About Your Project" data-id="Ceritakan Proyek Anda">Tell Us About Your Project</h2>
                     <p class="text-pink-600 font-semibold" id="formPlan"></p>
                 </div>
-                <button onclick="closeForm()" class="text-slate-400 hover:text-slate-600 text-2xl">×</button>
+                <button onclick="closeForm()" class="text-slate-400 hover:text-slate-600 text-2xl">&times;</button>
             </div>
             <form id="planForm" onsubmit="submitPlan(event)">
                 <input type="hidden" id="planName">
