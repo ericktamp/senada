@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDFMaster - Solusi PDF Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .drop-zone { border: 2px dashed #e5e7eb; transition: all 0.3s ease; }
+        .drop-zone:hover { border-color: #ef4444; background: #fef2f2; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <nav class="bg-white border-b sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="bg-red-600 p-1.5 rounded-lg text-white font-bold text-xl">PM</div>
+            <span class="text-2xl font-black tracking-tighter">PDF<span class="text-red-600">Master</span></span>
+        </div>
+        <div class="hidden md:flex gap-8 font-medium text-gray-600">
+            <a href="#" class="hover:text-red-600">Merge</a>
+            <a href="#" class="hover:text-red-600">Split</a>
+            <a href="#" class="hover:text-red-600">Compress</a>
+            <a href="#" class="hover:text-red-600">All Tools</a>
+        </div>
+        <button class="bg-gray-100 px-5 py-2 rounded-full font-semibold hover:bg-gray-200 transition">Login</button>
+    </nav>
+
+    <header class="max-w-4xl mx-auto text-center py-16 px-4">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
+            Alat PDF Online <span class="text-red-600">Gratis</span> untuk Semua.
+        </h1>
+        <p class="text-lg text-gray-500 mb-10">
+            Gabungkan, pisahkan, kompres, dan konversi PDF hanya dengan beberapa klik. 
+            Aman, cepat, dan bekerja langsung di browser Anda.
+        </p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 pb-24">
+        
+        <div id="main-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div onclick="showTool('Merge PDF')" class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col items-center text-center cursor-pointer group">
+                <div class="bg-red-50 p-5 rounded-2xl mb-5 group-hover:scale-110 transition-transform">
+                    <i data-lucide="layers" class="w-10 h-10 text-red-600"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Merge PDF</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">Gabungkan beberapa file PDF menjadi satu dokumen dengan mudah.</p>
+            </div>
+
+            <div onclick="showTool('Split PDF')" class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col items-center text-center cursor-pointer group">
+                <div class="bg-blue-50 p-5 rounded-2xl mb-5 group-hover:scale-110 transition-transform">
+                    <i data-lucide="scissors" class="w-10 h-10 text-blue-600"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Split PDF</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">Pisahkan satu halaman atau ekstrak semua halaman PDF.</p>
+            </div>
+
+            <div onclick="showTool('Compress PDF')" class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col items-center text-center cursor-pointer group">
+                <div class="bg-green-50 p-5 rounded-2xl mb-5 group-hover:scale-110 transition-transform">
+                    <i data-lucide="shrink" class="w-10 h-10 text-green-600"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Compress PDF</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">Kecilkan ukuran file PDF tanpa merusak kualitas dokumen.</p>
+            </div>
+
+            <div onclick="showTool('Unlock PDF')" class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col items-center text-center cursor-pointer group">
+                <div class="bg-purple-50 p-5 rounded-2xl mb-5 group-hover:scale-110 transition-transform">
+                    <i data-lucide="lock-open" class="w-10 h-10 text-purple-600"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Unlock PDF</h3>
+                <p class="text-sm text-gray-500 leading-relaxed">Hapus enkripsi kata sandi dari file PDF Anda.</p>
+            </div>
+        </div>
+
+        <div id="upload-section" class="hidden max-w-2xl mx-auto">
+            <button onclick="hideTool()" class="mb-6 flex items-center text-gray-500 hover:text-red-600 transition">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i> Kembali ke Menu
+            </button>
+            <div class="bg-white p-10 rounded-3xl shadow-2xl text-center">
+                <h2 id="tool-title" class="text-3xl font-bold mb-4 text-gray-800">Merge PDF</h2>
+                <div class="drop-zone rounded-2xl p-12 flex flex-col items-center justify-center mb-6">
+                    <i data-lucide="upload-cloud" class="w-16 h-16 text-gray-300 mb-4"></i>
+                    <p class="text-lg font-medium text-gray-600 mb-2">Tarik dan lepas file PDF di sini</p>
+                    <p class="text-sm text-gray-400 mb-6">atau klik untuk memilih file dari komputer</p>
+                    <input type="file" id="fileInput" class="hidden" multiple accept="application/pdf">
+                    <button onclick="document.getElementById('fileInput').click()" class="bg-red-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-red-700 shadow-lg shadow-red-200 transition-all active:scale-95">
+                        Pilih File PDF
+                    </button>
+                </div>
+                <div id="file-list" class="text-left mb-4 text-sm text-gray-600 font-medium"></div>
+                <button id="processBtn" class="w-full bg-gray-900 text-white py-4 rounded-xl font-bold hidden hover:bg-black transition">
+                    Proses Sekarang
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t py-12 text-center">
+        <p class="text-gray-400 font-medium">© 2026 PDFMaster. Dibuat dengan presisi untuk produktivitas.</p>
+    </footer>
+
+    <script>
+        // Inisialisasi Icon
+        lucide.createIcons();
+
+        const mainGrid = document.getElementById('main-grid');
+        const uploadSection = document.getElementById('upload-section');
+        const toolTitle = document.getElementById('tool-title');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('file-list');
+        const processBtn = document.getElementById('processBtn');
+
+        function showTool(name) {
+            mainGrid.classList.add('hidden');
+            uploadSection.classList.remove('hidden');
+            toolTitle.innerText = name;
+            window.scrollTo(0,0);
+        }
+
+        function hideTool() {
+            uploadSection.classList.add('hidden');
+            mainGrid.classList.remove('hidden');
+            fileInput.value = '';
+            fileList.innerHTML = '';
+            processBtn.classList.add('hidden');
+        }
+
+        fileInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (files.length > 0) {
+                fileList.innerHTML = `<p class="mb-2">File terpilih:</p>`;
+                Array.from(files).forEach(f => {
+                    fileList.innerHTML += `<div class="bg-gray-50 p-2 rounded mb-1 border">${f.name}</div>`;
+                });
+                processBtn.classList.remove('hidden');
+            }
+        });
+
+        // Contoh Logika Dasar Pemrosesan (Merge)
+        processBtn.addEventListener('click', async () => {
+            processBtn.innerText = "Sedang Memproses...";
+            processBtn.disabled = true;
+
+            try {
+                const { PDFDocument } = PDFLib;
+                const mergedPdf = await PDFDocument.create();
+                
+                for (const file of fileInput.files) {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdf = await PDFDocument.load(arrayBuffer);
+                    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                    copiedPages.forEach((page) => mergedPdf.addPage(page));
+                }
+
+                const pdfBytes = await mergedPdf.save();
+                
+                // Download file hasil
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = "PDFMaster-Hasil.pdf";
+                link.click();
+                
+                alert("Berhasil! File Anda telah diproses.");
+            } catch (err) {
+                console.error(err);
+                alert("Terjadi kesalahan saat memproses PDF.");
+            } finally {
+                processBtn.innerText = "Proses Sekarang";
+                processBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
