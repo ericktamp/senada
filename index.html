@@ -1018,8 +1018,9 @@
             const idea = document.getElementById('idea').value;
 
             const message = currentLang === 'en' ?
-                `New order for ${selectedPlan} package!\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nEvent: ${eventType}\nFor: ${toWhom}\nIdea/Details:\n${idea}` :
-                `Pesanan baru paket ${selectedPlan}!\n\nNama: ${name}\nEmail: ${email}\nTelepon: ${phone}\nAcara: ${eventType}\nUntuk: ${toWhom}\nIde/Detail:\n${idea}`;
+                `New order for ${selectedPlan} package!\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nEvent: ${eventType}\nPrice: ${priceType}\nFor: ${toWhom}\nIdea/Details:\n${idea}` :
+                `Pesanan baru paket ${selectedPlan}!\n\nNama: ${name}\nEmail: ${email}\nTelepon: ${phone}\nAcara: ${eventType}\nHarga: ${priceType}\nUntuk: ${toWhom}\nIde/Detail:\n${idea}`;
+                
 
             window.open(`https://wa.me/6285708989602?text=${encodeURIComponent(message)}`, '_blank');
             closeForm();
