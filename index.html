@@ -10,6 +10,40 @@
     <meta name="description" content="Senada menyediakan jasa pembuatan website hadiah untuk couple, keluarga, dan orang terkasih. Website statis, aman, dan personal.">
     <meta name="keywords" content="senada, website hadiah, website couple, jasa website statis">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://senada.my.id">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://senada.my.id">
+    <meta property="og:title" content="Senada | Website Hadiah Digital Untuk Couple & Keluarga">
+    <meta property="og:description" content="Ubah kenangan indah jadi website estetik! Cocok untuk anniversary, ulang tahun, wisuda, atau surprise untuk pasangan. Harga mulai 30rb. Fast response 24 jam!">
+    <meta property="og:image" content="https://senada.my.id/senada.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Senada">
+    <meta property="og:locale" content="id_ID">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://senada.my.id">
+<meta name="twitter:title" content="Senada | Website Hadiah Digital Untuk Couple & Keluarga">
+<meta name="twitter:description" content="Ubah kenangan indah jadi website estetik! Cocok untuk anniversary, ulang tahun, wisuda, atau surprise untuk pasangan. Harga mulai 30rb!">
+<meta name="twitter:image" content="https://senada.my.id/senada.jpg">
+
+<!-- Additional SEO -->
+<meta name="theme-color" content="#ec4899">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Senada">
+
+<!-- Geo Tags -->
+<meta name="geo.region" content="ID-JK">
+<meta name="geo.placename" content="Jakarta">
+<meta name="geo.position" content="-6.200000;106.816666">
+<meta name="ICBM" content="-6.200000, 106.816666">
+
+<!-- Additional Keywords for Better Reach -->
+<meta name="keywords" content="jasa website jakarta, website hadiah jakarta, web developer jakarta, buat website murah, website custom murah, website statis, static website, landing page romantis, website gift, web anniversary, web birthday, web graduation, website proposal, website lamaran, website pernikahan murah, undangan online, website memorable, jasa web couple, web romantis, kado digital, hadiah anniversary, hadiah ulang tahun unik, hadiah wisuda, jasa pembuatan website, web design jakarta, website estetik, website aesthetic, portfolio website, website kenangan, web memory, digital gift indonesia, surprise online, hadiah online, website personal branding">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -135,8 +169,47 @@
         .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 8px; transition: all 0.3s; }
         .lang-btn:hover { background: rgba(236, 72, 153, 0.1); }
         .lang-btn.active { background: linear-gradient(135deg, #ec4899, #f43f5e); color: white; }
+
+        /* About Modal */
+.about-modal { 
+    display: none; 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.8); 
+    z-index: 9999; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 20px; 
+}
+.about-modal.active { display: flex; }
+.about-modal-content { 
+    background: white; 
+    border-radius: 24px; 
+    max-width: 700px; 
+    width: 100%; 
+    padding: 40px; 
+    max-height: 90vh; 
+    overflow-y: auto; 
+}
     </style>
     <link rel="icon" type="image/png" href="S.png">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Senada",
+  "image": "https://senada.my.id/senada.jpg",
+  "description": "Jasa pembuatan website hadiah digital untuk couple, keluarga, dan orang terkasih",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Jakarta",
+    "addressCountry": "ID"
+  },
+  "priceRange": "Rp30.000 - Rp200.000",
+  "telephone": "+6285708989602",
+  "url": "https://senada.my.id"
+}
+</script>
 </head>
 <body class="bg-stone-50 text-slate-800">
 
@@ -507,19 +580,19 @@
                 <div>
                     <h4 class="font-bold mb-4 text-sm uppercase tracking-wider" data-en="Services" data-id="Layanan">Services</h4>
                     <ul class="space-y-2 text-slate-400 text-sm">
-                        <li><a href="#" class="hover:text-pink-400 transition" data-en="Couple Website" data-id="Website Couple">Couple Website</a></li>
-                        <li><a href="#" class="hover:text-pink-400 transition" data-en="Family Website" data-id="Website Keluarga">Family Website</a></li>
+                        <li><a href="#portfolio" class="hover:text-pink-400 transition" data-en="Couple Website" data-id="Website Couple">Couple Website</a></li>
+                        <li><a href="https://wedding-fawn-omega.vercel.app/family.html" class="hover:text-pink-400 transition" data-en="Family Website" data-id="Website Keluarga">Family Website</a></li>
                         <li><a href="https://wedding-fawn-omega.vercel.app/" class="hover:text-pink-400 transition" data-en="Wedding Website" data-id="Website Pernikahan">Wedding Website</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h4 class="font-bold mb-4 text-sm uppercase tracking-wider" data-en="Company" data-id="Perusahaan">Company</h4>
-                    <ul class="space-y-2 text-slate-400 text-sm">
-                        <li><a href="#" class="hover:text-pink-400 transition" data-en="About Us" data-id="Tentang Kami">About Us</a></li>
-                        <li><a href="https://wa.me/6285708989602?text=Halo Senada, saya mau bertanya mengenai kerjasama." class="hover:text-pink-400 transition" data-en="Partnership" data-id="Kerjasama">Partnership</a></li>
-                        <li><a href="https://wa.me/6285708989602?text=Halo Senada, saya mau tanya-tanya dong." class="hover:text-pink-400 transition" data-en="Contact" data-id="Kontak">Contact</a></li>
-                    </ul>
-                </div>
+               <div>
+    <h4 class="font-bold mb-4 text-sm uppercase tracking-widest" data-en="Company" data-id="Perusahaan">Company</h4>
+    <ul class="space-y-2 text-slate-400 text-sm">
+        <li><button onclick="openAbout()" class="hover:text-pink-400 transition text-left w-full" data-en="About Us" data-id="Tentang Kami">About Us</button></li>
+        <li><a href="https://wa.me/6285708989602?text=Halo%20Senada,%20saya%20mau%20bertanya%20mengenai%20kerjasama/partnership." class="hover:text-pink-400 transition" data-en="Partnership" data-id="Kerjasama">Partnership</a></li>
+        <li><a href="https://wa.me/6285708989602?text=Halo%20Senada,%20saya%20mau%20kontak/tanya-tanya." class="hover:text-pink-400 transition" data-en="Contact" data-id="Kontak">Contact</a></li>
+    </ul>
+</div>
                 <div>
                     <h4 class="font-bold mb-4 text-sm uppercase tracking-wider" data-en="Follow Us" data-id="Ikuti Kami">Follow Us</h4>
                     <div class="flex gap-4">
@@ -530,7 +603,7 @@
                 </div>
             </div>
             <div class="border-t border-slate-800 pt-8 text-center">
-                <p class="text-sm text-slate-400"><i class="fas fa-heart text-pink-500 mx-2"></i><span data-en="Â© 2025 Senada. Made with love for your memories." data-id="Â© 2025 Senada. Dibuat dengan cinta untuk memori Anda.">Â© 2025 Senada. Made with love for your memories.</span></p>
+                <p class="text-sm text-slate-400"><i class="fas fa-heart text-pink-500 mx-2"></i><span data-en="2025 Senada - Part of Webinaja. Made with love for your memories." data-id="2025 Senada - Webinaja. Dibuat dengan cinta untuk memori Anda.">2025 Senada - Part of Webinaja. Made with love for your memories</span></p>
             </div>
         </div>
     </footer>
@@ -628,7 +701,7 @@
                     <option value="Graduation" data-en="Graduation" data-id="Wisuda">Wisuda</option>
                     <option value="Other" data-en="Other" data-id="Lainnya">Lainnya</option>
                 </select>
-                <select id="eventType" class="form-input" required>
+                <select id="priceType" class="form-input" required>
                     <option value="" disabled selected data-en="Price" data-id="Harga">Price</option>
                     <option value="30.000" data-en="30.000" data-id="30.000">30.000</option>
                     <option value="40.000" data-en="40.000" data-id="40.000">40.000</option>
@@ -647,6 +720,32 @@
             </form>
         </div>
     </div>
+
+    <!-- About Us Modal -->
+<div id="aboutModal" class="about-modal" onclick="closeAbout(event)">
+    <div class="about-modal-content" onclick="event.stopPropagation()">
+        <div class="flex justify-between items-start mb-8">
+            <h2 class="text-4xl font-serif font-bold gradient-text" data-en="About Senada" data-id="Tentang Senada">About Senada</h2>
+            <button onclick="closeAbout()" class="text-slate-400 hover:text-slate-600 text-3xl">&times;</button>
+        </div>
+        <div class="space-y-6 text-slate-600">
+            <p data-en="Senada is a creative service that helps you turn precious moments into beautiful, personal digital websites. We believe that every love story, family memory, or special achievement deserves to be preserved in a unique and unforgettable way." data-id="Senada adalah jasa kreatif yang membantu Anda mengubah momen berharga menjadi website digital yang indah dan personal. Kami percaya setiap kisah cinta, kenangan keluarga, atau pencapaian spesial layak diabadikan dengan cara yang unik dan tak terlupakan.">
+                Senada adalah jasa kreatif yang membantu Anda mengubah momen berharga menjadi website digital yang indah dan personal. Kami percaya setiap kisah cinta, kenangan keluarga, atau pencapaian spesial layak diabadikan dengan cara yang unik dan tak terlupakan.
+            </p>
+            <p data-en="Founded with passion for design and emotion, we focus on creating static websites that are safe, fast, and full of meaning. No complicated maintenance – just pure memories that can be shared anytime." data-id="Didirikan dengan passion terhadap desain dan emosi, kami fokus membuat website statis yang aman, cepat, dan penuh makna. Tanpa maintenance ribet – hanya kenangan murni yang bisa dibagikan kapan saja.">
+                Didirikan dengan passion terhadap desain dan emosi, kami fokus membuat website statis yang aman, cepat, dan penuh makna. Tanpa maintenance ribet – hanya kenangan murni yang bisa dibagikan kapan saja.
+            </p>
+            <p data-en="Every project is handled with love and attention to detail, so your gift feels truly special for the recipient." data-id="Setiap proyek kami kerjakan dengan penuh cinta dan perhatian detail, supaya hadiah Anda terasa benar-benar spesial bagi penerimanya.">
+                Setiap proyek kami kerjakan dengan penuh cinta dan perhatian detail, supaya hadiah Anda terasa benar-benar spesial bagi penerimanya.
+            </p>
+            <div class="pt-6 text-center">
+                <a href="https://wa.me/6285708989602?text=Halo%20Senada,%20saya%20tertarik%20dengan%20layanan%20kalian!" class="inline-block bg-gradient-to-r from-pink-500 to-rose-500 text-white px-8 py-4 rounded-xl font-bold hover:shadow-xl transition shine">
+                    <i class="fab fa-whatsapp mr-2"></i><span data-en="Start Your Project" data-id="Mulai Proyek Anda">Mulai Proyek Anda</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
     <script>
         let chatOpen = false;
@@ -795,8 +894,8 @@
 
         function chooseConcept() {
             const msg = currentLang === 'en' ? 
-                'Hi, I Wanna Ask About This Project..' : 
-                'Halo, Saya mau tanya mengenai project yang ini dong..';
+                'Hi Senada, I Wanna Ask About Your Project Template..' : 
+                'Halo Senada! Saya mau tanya mengenai template projectnya dong. Mohon Bantuannya yaa';
             alert(msg);
             window.open('https://wa.me/6285708989602?text=' + encodeURIComponent(msg), '_blank');
         }
@@ -830,14 +929,14 @@
     setTimeout(() => {
         const replies = [
             "Kayaknya aku lagi gabisa bales kamu dulu deh.. ",
-            "Seems our chatbot server is down ðŸ˜”ðŸ˜”"
+            "Seems our chatbot server is down 😔😔"
         ];
         const randomReply = replies[Math.floor(Math.random() * replies.length)];
         addMessageToChat(randomReply, false);
         
         // 2 detik kemudian, tawarin langsung ke WA
         setTimeout(() => {
-            addMessageToChat("Klik tombol di bawah ini untuk lanjut konsultasi gratis via WhatsApp ya! ðŸš€", false);
+            addMessageToChat("Klik tombol di bawah ini untuk lanjut konsultasi gratis via WhatsApp ya! 💌💌", false);
             
             // Tambah tombol WA di chat
             const container = document.getElementById('chatMessages');
@@ -914,6 +1013,7 @@
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value || 'Tidak disebutkan';
             const eventType = document.getElementById('eventType').options[document.getElementById('eventType').selectedIndex].text;
+            const priceType = document.getElementById('priceType').options[document.getElementById('priceType').selectedIndex].text;
             const toWhom = document.getElementById('toWhom').value;
             const idea = document.getElementById('idea').value;
 
@@ -925,6 +1025,18 @@
             closeForm();
             alert(currentLang === 'en' ? 'Thank you! We will contact you shortly via WhatsApp.' : 'Terima kasih! Kami akan segera hubungi Anda via WhatsApp.');
         }
+        // About Us Modal
+function openAbout() {
+    document.getElementById('aboutModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeAbout(event) {
+    if (!event || event.target.id === 'aboutModal') {
+        document.getElementById('aboutModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
     </script>
 </body>
 </html>
